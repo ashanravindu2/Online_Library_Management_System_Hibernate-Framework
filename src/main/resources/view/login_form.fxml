@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="694.0" prefWidth="1167.0" style="-fx-background-color: dad7cd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.LoginController">
+   <children>
+      <ImageView fitHeight="652.0" fitWidth="1244.0" layoutX="-203.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/young%20woman%20imagining%20things%20while%20reading%20e-book.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="662.0" fitWidth="419.0" layoutX="722.0" layoutY="16.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Rectangle%201.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="52.0" fitWidth="124.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/libraryLogo.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="748.0" layoutY="388.0" prefHeight="61.0" prefWidth="376.0" stylesheets="@../CssSheet/loginsheet.css" text="Log In" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="886.0" layoutY="24.0" prefHeight="47.0" prefWidth="100.0" text="Log In" textFill="#1c4626">
+         <font>
+            <Font name="BaguetDisplayCapsSSi" size="35.0" />
+         </font>
+      </Label>
+      <JFXTextField focusColor="#2b7c45" labelFloat="true" layoutX="759.0" layoutY="134.0" prefHeight="40.0" prefWidth="353.0" promptText="UserName">
+         <font>
+            <Font size="16.0" />
+         </font></JFXTextField>
+      <JFXPasswordField fx:id="textPassword" focusColor="#2b7c45" labelFloat="true" layoutX="759.0" layoutY="241.0" prefHeight="40.0" prefWidth="353.0" promptText="Password">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXTextField fx:id="textField" focusColor="#2b7c45" labelFloat="true" layoutX="759.0" layoutY="241.0" prefHeight="40.0" prefWidth="353.0" promptText="Password">
+         <font>
+            <Font size="16.0" />
+         </font></JFXTextField>
+      <JFXButton layoutX="748.0" layoutY="481.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="376.0" stylesheets="@../CssSheet/loginsheet.css" text="Create Account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+
+      <JFXCheckBox fx:id="checkBox" layoutX="1058.0" layoutY="291.0" mnemonicParsing="false" text="Show" />
+
+
+   </children>
+</AnchorPane>
