@@ -14,15 +14,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginController {
-
-    public JFXCheckBox checkBox;
+public class AdminLogInController {
+    public AnchorPane rootNodeAdmin;
     public JFXPasswordField textPassword;
     public JFXTextField textField;
-    public JFXRadioButton adminSelect;
-    public JFXRadioButton userSelect;
-    public AnchorPane rootNodeUser;
-    public AnchorPane rootNodeAdmin;
+    public JFXCheckBox checkBox;
+
+
 
     public void initialize(){
 
@@ -37,12 +35,11 @@ public class LoginController {
     }
 
 
-    public void adminSelectOnAction(MouseEvent mouseEvent) throws IOException {
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/admin_login_form.fxml"));
+    public void userSelectOnAction(MouseEvent mouseEvent) throws IOException {
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/user_login_form.fxml"));
         Scene scene = new Scene(rootNode);
-        Stage stage = (Stage) this.rootNodeUser.getScene().getWindow();
+        Stage stage = (Stage) this.rootNodeAdmin.getScene().getWindow();
         stage.setTitle("Admin LogIn");
         stage.setScene(scene);
     }
-
 }

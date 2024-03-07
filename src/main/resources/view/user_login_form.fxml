@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootNodeUser" prefHeight="694.0" prefWidth="1167.0" style="-fx-background-color: dad7cd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.LoginController">
+   <children>
+      <ImageView fitHeight="652.0" fitWidth="1244.0" layoutX="-203.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/young%20woman%20imagining%20things%20while%20reading%20e-book.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="662.0" fitWidth="419.0" layoutX="722.0" layoutY="16.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Rectangle%201.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="52.0" fitWidth="124.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/libraryLogo.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="748.0" layoutY="471.0" prefHeight="61.0" prefWidth="376.0" stylesheets="@../CssSheet/loginsheet.css" text="Log In" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <Label contentDisplay="CENTER" layoutX="852.0" layoutY="24.0" prefHeight="47.0" prefWidth="171.0" text="User LogIn" textFill="#1c4626">
+         <font>
+            <Font name="AcanthusBlackSSK Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXTextField focusColor="#2b7c45" labelFloat="true" layoutX="759.0" layoutY="217.0" prefHeight="40.0" prefWidth="353.0" promptText="UserName">
+         <font>
+            <Font size="16.0" />
+         </font></JFXTextField>
+      <JFXPasswordField fx:id="textPassword" focusColor="#2b7c45" labelFloat="true" layoutX="759.0" layoutY="324.0" prefHeight="40.0" prefWidth="353.0" promptText="Password">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXTextField fx:id="textField" focusColor="#2b7c45" labelFloat="true" layoutX="759.0" layoutY="324.0" prefHeight="40.0" prefWidth="353.0" promptText="Password">
+         <font>
+            <Font size="16.0" />
+         </font></JFXTextField>
+      <JFXButton layoutX="748.0" layoutY="564.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="376.0" stylesheets="@../CssSheet/loginsheet.css" text="Create Account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+
+      <JFXCheckBox fx:id="checkBox" layoutX="1058.0" layoutY="374.0" mnemonicParsing="false" text="Show" />
+      <Line endX="100.0" fill="#17802a" layoutX="943.0" layoutY="153.0" opacity="0.94" startX="-100.0" stroke="#2e4537" strokeMiterLimit="45.0" />
+      <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="80.0" layoutX="875.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/user.png" />
+         </image>
+         <effect>
+            <DropShadow radius="23.19" width="73.76">
+               <color>
+                  <Color red="0.053728070110082626" green="0.2763157784938812" blue="0.109375" />
+               </color>
+            </DropShadow>
+         </effect>
+      </ImageView>
+      <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="80.0" layoutX="957.0" layoutY="88.0" onMouseClicked="#adminSelectOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/admin.png" />
+         </image>
+         <effect>
+            <DropShadow radius="23.19" width="73.76">
+               <color>
+                  <Color red="0.053728070110082626" green="0.2763157784938812" blue="0.109375" />
+               </color>
+            </DropShadow>
+         </effect>
+      </ImageView>
+      <Label layoutX="883.0" layoutY="128.0" text="User">
+         <font>
+            <Font name="Acropolis Regular" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow height="6.34" radius="1.8175" width="2.93">
+               <color>
+                  <Color red="0.07730263471603394" green="0.3552631437778473" blue="0.20238487422466278" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+      <Label layoutX="962.0" layoutY="128.0" text="Admin">
+         <font>
+            <Font name="Acropolis Regular" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow height="6.34" radius="1.8175" width="2.93">
+               <color>
+                  <Color red="0.07730263471603394" green="0.3552631437778473" blue="0.20238487422466278" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+
+
+   </children>
+</AnchorPane>
