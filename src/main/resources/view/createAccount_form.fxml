@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #dad7cd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.CreateAccountController">
+   <children>
+      <ImageView fitHeight="347.0" fitWidth="243.0" layoutX="39.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/registerimage.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="387.0" layoutY="35.0" text="Register" textFill="#344e41">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Line endX="90.0" layoutX="432.0" layoutY="67.0" startX="-98.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8549019694328308" green="0.843137264251709" blue="0.8039215803146362" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5100671140939597">
+                     <color>
+                        <Color red="0.22745098173618317" green="0.3529411852359772" blue="0.250980406999588" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8549019694328308" green="0.843137264251709" blue="0.8039215803146362" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
+      <JFXTextField fx:id="txtEmail" focusColor="#2b7c45" labelFloat="true" layoutX="330.0" layoutY="170.0" minWidth="200.0" promptText="Email">
+         <font>
+            <Font size="14.0" />
+         </font></JFXTextField>
+      <JFXTextField fx:id="txtUserName" focusColor="#2b7c45" labelFloat="true" layoutX="330.0" layoutY="100.0" minWidth="200.0" promptText="Name">
+         <font>
+            <Font size="14.0" />
+         </font></JFXTextField>
+      <JFXTextField fx:id="txtPassword" focusColor="#2b7c45" labelFloat="true" layoutX="330.0" layoutY="240.0" minWidth="200.0" promptText="Password">
+         <font>
+            <Font size="14.0" />
+         </font></JFXTextField>
+      <JFXButton layoutX="330.0" layoutY="315.0" minHeight="30.0" minWidth="200.0" mnemonicParsing="false" onAction="#btnRegisterOnAction" stylesheets="@../CssSheet/loginsheet.css" text="Register" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

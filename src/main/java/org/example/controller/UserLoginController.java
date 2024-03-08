@@ -11,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -20,13 +19,15 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class AdminLogInController {
-    public AnchorPane rootNodeAdmin;
+public class UserLoginController {
+
+    public JFXCheckBox checkBox;
     public JFXPasswordField textPassword;
     public JFXTextField textField;
-    public JFXCheckBox checkBox;
-
-
+    public JFXRadioButton adminSelect;
+    public JFXRadioButton userSelect;
+    public AnchorPane rootNodeUser;
+    public AnchorPane rootNodeAdmin;
 
     public void initialize(){
 
@@ -41,10 +42,10 @@ public class AdminLogInController {
     }
 
 
-    public void userSelectOnAction(MouseEvent mouseEvent) throws IOException {
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/user_login_form.fxml"));
+    public void adminSelectOnAction(MouseEvent mouseEvent) throws IOException {
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/admin_login_form.fxml"));
         Scene scene = new Scene(rootNode);
-        Stage stage = (Stage) this.rootNodeAdmin.getScene().getWindow();
+        Stage stage = (Stage) this.rootNodeUser.getScene().getWindow();
         stage.setTitle("Admin LogIn");
         stage.setScene(scene);
     }
@@ -53,23 +54,13 @@ public class AdminLogInController {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/createAccount_form.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        stage.setScene(scene);
         stage.setResizable(false);
         stage.centerOnScreen();
+
+        stage.setScene(scene);
         stage.setTitle("Create Account");
         stage.show();
-
     }
-
-    public void btnLogInAction(ActionEvent actionEvent) throws IOException {
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/admin_dashboard_form.fxml"));
-        Scene scene = new Scene(rootNode);
-        Stage stage = (Stage) this.rootNodeAdmin.getScene().getWindow();
-        stage.setTitle("Subarandu Online Library");
-        stage.setScene(scene);
-
-    }
-
 
     public void mouseEnterAction(MouseEvent mouseEvent) {
         if (mouseEvent.getSource() instanceof ImageView) {
@@ -87,7 +78,7 @@ public class AdminLogInController {
             glow.setRadius(15);
             icon.setEffect(glow);
         }
-    }
+}
 
     public void mouseExitAction(MouseEvent mouseEvent) {
         if (mouseEvent.getSource() instanceof ImageView) {

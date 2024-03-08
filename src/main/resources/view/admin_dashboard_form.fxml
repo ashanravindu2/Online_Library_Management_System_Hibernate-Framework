@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="694.0" prefWidth="1167.0" style="-fx-background-color: #A3B18A;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.AdminDashboardController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="694.0" layoutX="267.0" layoutY="-1.0" strokeType="INSIDE" width="900.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="61.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/dashboard.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="33.0" layoutY="142.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/branch.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="170.0" fitWidth="200.0" layoutX="34.0" layoutY="224.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/books.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="170.0" fitWidth="200.0" layoutX="34.0" layoutY="307.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="170.0" fitWidth="200.0" layoutX="35.0" layoutY="620.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/logout.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="1109.0" layoutY="11.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/accountManage.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#588157" height="42.0" layoutX="401.0" layoutY="11.0" opacity="0.69" strokeType="INSIDE" style="-fx-arc-height: 22; -fx-arc-width: 22;" width="125.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#588157" height="42.0" layoutX="267.0" layoutY="11.0" opacity="0.69" strokeType="INSIDE" style="-fx-arc-height: 22; -fx-arc-width: 22;" width="125.0" />
+      <Label fx:id="lblTime" layoutX="430.0" layoutY="19.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="267.0" layoutY="62.0" prefHeight="632.0" prefWidth="900.0" style="-fx-background-color: white;" />
+      <Label fx:id="lblDate" layoutX="284.0" layoutY="19.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

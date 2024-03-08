@@ -6,3 +6,13 @@
 .button:hover{
     -fx-background-color: #3a5a40;
 }
+
+
+.textHover{
+    -fx-text-fill: #00ff30;
+}
+
+.textHover:hover{
+    -fx-text-fill: #3a5a40;
+}
+

@@ -26,7 +26,7 @@
             <Image url="@../assets/libraryLogo.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="748.0" layoutY="471.0" prefHeight="61.0" prefWidth="376.0" stylesheets="@../CssSheet/loginsheet.css" text="Log In" textFill="WHITE">
+      <JFXButton layoutX="748.0" layoutY="471.0" onAction="#btnLogInAction" prefHeight="61.0" prefWidth="376.0" stylesheets="@../CssSheet/loginsheet.css" text="Log In" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -49,7 +49,7 @@
          <font>
             <Font size="16.0" />
          </font></JFXTextField>
-      <JFXButton layoutX="748.0" layoutY="564.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="376.0" stylesheets="@../CssSheet/loginsheet.css" text="Create Account" textFill="WHITE">
+      <JFXButton layoutX="748.0" layoutY="564.0" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="61.0" prefWidth="376.0" stylesheets="@../CssSheet/loginsheet.css" text="Register" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -57,7 +57,7 @@
 
       <JFXCheckBox fx:id="checkBox" layoutX="1058.0" layoutY="374.0" mnemonicParsing="false" text="Show" />
       <Line endX="100.0" fill="#17802a" layoutX="943.0" layoutY="153.0" opacity="0.94" startX="-100.0" stroke="#2e4537" strokeMiterLimit="45.0" />
-      <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="80.0" layoutX="875.0" layoutY="88.0" onMouseClicked="#userSelectOnAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="80.0" layoutX="875.0" layoutY="88.0" onMouseClicked="#userSelectOnAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/user.png" />
          </image>
@@ -69,7 +69,7 @@
             </DropShadow>
          </effect>
       </ImageView>
-      <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="80.0" layoutX="957.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="80.0" layoutX="957.0" layoutY="88.0" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/admin.png" />
          </image>
