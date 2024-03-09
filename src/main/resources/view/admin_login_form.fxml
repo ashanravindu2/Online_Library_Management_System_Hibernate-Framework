@@ -21,6 +21,34 @@
             <Image url="@../assets/Rectangle%201.png" />
          </image>
       </ImageView>
+      <Line endX="99.0" layoutX="943.0" layoutY="150.0" startX="-100.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6392157077789307" green="0.6941176652908325" blue="0.5411764979362488" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color red="0.6392157077789307" green="0.6941176652908325" blue="0.5411764979362488" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5104475253782041">
+                     <color>
+                        <Color red="0.10980392247438431" green="0.29019609093666077" blue="0.13725490868091583" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6392157077789307" green="0.6941176652908325" blue="0.5411764979362488" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
       <ImageView fitHeight="52.0" fitWidth="124.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/libraryLogo.png" />
@@ -56,7 +84,6 @@
       </JFXButton>
 
       <JFXCheckBox fx:id="checkBox" layoutX="1058.0" layoutY="374.0" mnemonicParsing="false" text="Show" />
-      <Line endX="100.0" fill="#17802a" layoutX="943.0" layoutY="153.0" opacity="0.94" startX="-100.0" stroke="#2e4537" strokeMiterLimit="45.0" />
       <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="80.0" layoutX="875.0" layoutY="88.0" onMouseClicked="#userSelectOnAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/user.png" />

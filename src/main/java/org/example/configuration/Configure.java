@@ -1,7 +1,7 @@
-/*
+
 package org.example.configuration;
 
-import lk.ijse.d24hostalmng.entity.*;
+import org.example.entity.Admin;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -24,10 +24,7 @@ public class Configure {
         }
 
         configuration.
-                addAnnotatedClass(Student.class).
-                addAnnotatedClass(Room.class).
-                addAnnotatedClass(Reservation.class)
-                .addAnnotatedClass(User.class);
+                addAnnotatedClass(Admin.class);
 
         factory=configuration.setProperties(properties).buildSessionFactory();
     }
@@ -42,4 +39,4 @@ public class Configure {
         return factory.openSession();
     }
 }
-*/
+

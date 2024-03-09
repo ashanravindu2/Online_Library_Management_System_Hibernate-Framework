@@ -2,16 +2,15 @@ package org.example.controller;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -47,10 +46,15 @@ public class AdminLogInController {
         Stage stage = (Stage) this.rootNodeAdmin.getScene().getWindow();
         stage.setTitle("Admin LogIn");
         stage.setScene(scene);
+
+        TranslateTransition tt = new TranslateTransition(Duration.millis(400), scene.getRoot());
+        tt.setFromY(-scene.getWidth());
+        tt.setToY(0);
+        tt.play();
     }
 
     public void btnRegisterOnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/createAccount_form.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/adminAccount_form.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -67,6 +71,11 @@ public class AdminLogInController {
         Stage stage = (Stage) this.rootNodeAdmin.getScene().getWindow();
         stage.setTitle("Subarandu Online Library");
         stage.setScene(scene);
+
+        TranslateTransition tt = new TranslateTransition(Duration.millis(800), scene.getRoot());
+        tt.setFromY(-scene.getWidth());
+        tt.setToY(0);
+        tt.play();
 
     }
 

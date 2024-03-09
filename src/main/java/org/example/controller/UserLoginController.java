@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -48,10 +49,15 @@ public class UserLoginController {
         Stage stage = (Stage) this.rootNodeUser.getScene().getWindow();
         stage.setTitle("Admin LogIn");
         stage.setScene(scene);
+
+        TranslateTransition tt = new TranslateTransition(Duration.millis(400), scene.getRoot());
+        tt.setFromY(-scene.getWidth());
+        tt.setToY(0);
+        tt.play();
     }
 
     public void btnRegisterOnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/createAccount_form.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/userAccount_form.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setResizable(false);
