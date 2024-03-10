@@ -13,12 +13,12 @@
    <children>
       <ImageView fitHeight="652.0" fitWidth="1244.0" layoutX="-203.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/young%20woman%20imagining%20things%20while%20reading%20e-book.png" />
+            <Image url="@../assets/main.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="662.0" fitWidth="419.0" layoutX="722.0" layoutY="16.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/Rectangle%201.png" />
+            <Image url="@../assets/Rectangle.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="52.0" fitWidth="124.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
@@ -26,7 +26,7 @@
             <Image url="@../assets/libraryLogo.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="748.0" layoutY="471.0" prefHeight="61.0" prefWidth="376.0" stylesheets="@../CssSheet/loginsheet.css" text="Log In" textFill="WHITE">
+      <JFXButton layoutX="748.0" layoutY="471.0" onAction="#btnLoginOnAction" prefHeight="61.0" prefWidth="376.0" stylesheets="@../CssSheet/loginsheet.css" text="Log In" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

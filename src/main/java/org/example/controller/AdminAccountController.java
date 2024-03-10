@@ -6,13 +6,14 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.example.bo.BOFactory;
 import org.example.bo.custom.AdminBO;
+import org.example.bo.custom.UserBO;
 import org.example.dto.AdminDTO;
 
 public class AdminAccountController {
     public JFXTextField txtPassword;
     public JFXTextField txtUserName;
     public JFXTextField txtEmail;
-    private final AdminBO adminBO = BOFactory.getInstance().getBO(BOFactory.BOType.ADMIN);
+    private final AdminBO adminBO = (AdminBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.ADMIN);
 
     public void btnRegisterOnAction(ActionEvent actionEvent) {
         if (txtUserName.getText().equals("") && txtEmail.getText().equals("")|| txtPassword.getText().equals("")){

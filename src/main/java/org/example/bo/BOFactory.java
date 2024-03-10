@@ -1,26 +1,33 @@
 package org.example.bo;
 
 import org.example.bo.custom.impl.AdminBOImpl;
+import org.example.bo.custom.impl.UserBOImpl;
+import org.example.dao.custom.impl.UserDAOImpl;
 
 public class BOFactory {
     private static BOFactory boFactory;
 
-    private BOFactory(){}
+    private BOFactory() {
 
-    public enum BOType{
-        ADMIN
     }
 
-    public static BOFactory getInstance(){
-        return boFactory == null ? new BOFactory() : boFactory;
+    public static BOFactory getInstance() {
+        return boFactory == null ? boFactory = new BOFactory() : boFactory;
     }
 
-    public <T extends SuperBO>T getBO(BOType boType){
-        switch (boType){
+    public SuperBO getBO(BOTypes type) {
+        switch (type) {
             case ADMIN:
-                return (T) new AdminBOImpl();
+                return new AdminBOImpl();
+            case USER:
+                return new UserBOImpl();
+
             default:
                 return null;
         }
+    }
+
+    public enum BOTypes {
+        ADMIN, USER, STUDENT, RESERVATION, KEY_PAYMENTS, LOGIN
     }
 }

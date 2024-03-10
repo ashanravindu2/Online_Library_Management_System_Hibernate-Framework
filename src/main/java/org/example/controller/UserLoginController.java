@@ -60,12 +60,12 @@ public class UserLoginController {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/userAccount_form.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
+        stage.setScene(scene);
         stage.setResizable(false);
         stage.centerOnScreen();
-
-        stage.setScene(scene);
         stage.setTitle("Create Account");
         stage.show();
+
     }
 
     public void mouseEnterAction(MouseEvent mouseEvent) {
@@ -95,5 +95,8 @@ public class UserLoginController {
             scaleT.play();
             icon.setEffect(null);
         }
+    }
+
+    public void btnLoginOnAction(ActionEvent actionEvent) {
     }
 }

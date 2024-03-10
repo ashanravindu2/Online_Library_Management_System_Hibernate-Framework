@@ -2,20 +2,22 @@ package org.example.dao.custom.impl;
 
 import javafx.scene.control.Alert;
 import org.example.dao.custom.AdminDAO;
+import org.example.dao.custom.UserDAO;
 import org.example.entity.Admin;
+import org.example.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.Serializable;
 
-public class AdminDAOImpl implements AdminDAO {
+public class UserDAOImpl implements UserDAO {
     private Session session;
 
     @Override
-    public boolean save(Admin admin) {
+    public boolean save(User user) {
         try {
             Transaction transaction = session.beginTransaction();
-            Serializable save = session.save(admin);
+            Serializable save = session.save(user);
             transaction.commit();
             return save!=null;
         }catch (Exception e){
@@ -27,12 +29,12 @@ public class AdminDAOImpl implements AdminDAO {
     }
 
     @Override
-    public Admin find(String s) {
+    public User find(String s) {
         try {
             Transaction transaction = session.beginTransaction();
-            Admin admin = session.get(Admin.class, s);
+            User user = session.get(User.class, s);
             transaction.commit();
-            return admin;
+            return user;
         }catch (Exception e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             return null;
@@ -42,10 +44,10 @@ public class AdminDAOImpl implements AdminDAO {
     }
 
     @Override
-    public boolean update(Admin admin) {
+    public boolean update(User user) {
         try {
             Transaction transaction = session.beginTransaction();
-            session.update(admin);
+            session.update(user);
             transaction.commit();
             return true;
         }catch (Exception e){

@@ -24,7 +24,35 @@ public class AdminBOImpl implements AdminBO {
     }
 
     @Override
-    public AdminDTO findCredential(String text) {
+    public boolean update(AdminDTO adminDTO) {
+        Session session = Configure.getInstance().getSession();
+        adminDAO.setSession(session);
+        return adminDAO.update(new Admin(
+                adminDTO.getName(),
+                adminDTO.getGmail(),
+                adminDTO.getPassword()
+        ));
+    }
+
+    @Override
+    public AdminDTO find(String s) {
         return null;
     }
+
+    @Override
+    public AdminDTO findCredential(String text) {
+        Session session = Configure.getInstance().getSession();
+        adminDAO.setSession(session);
+        Admin admin = adminDAO.find(text);
+        if (admin!=null){
+            return new AdminDTO(
+                    admin.getGmail(),
+                    admin.getName(),
+                    admin.getPassword()
+            );
+        }else {
+            return null;
+        }
+    }
+
 }

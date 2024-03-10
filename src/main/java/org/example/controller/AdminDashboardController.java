@@ -3,20 +3,27 @@ package org.example.controller;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.*;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AdminDashboardController {
     public Label lblTime;
     public Label lblDate;
+    public AnchorPane rootPane;
     private Thread thread;
     boolean run = true;
 
@@ -71,5 +78,16 @@ public class AdminDashboardController {
         });
 
         thread.start();
+    }
+
+    public void btnAccountSettingAction(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/adminAccountSetting_form.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        stage.setTitle("Account Setting");
+        stage.show();
     }
 }

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="694.0" prefWidth="1167.0" style="-fx-background-color: #A3B18A;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.AdminDashboardController">
+<AnchorPane prefHeight="694.0" prefWidth="1167.0" style="-fx-background-color: #344e41;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.AdminDashboardController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="694.0" layoutX="267.0" layoutY="-1.0" strokeType="INSIDE" width="900.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#344e41" height="694.0" layoutX="267.0" layoutY="-1.0" strokeType="INSIDE" width="900.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="61.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/dashboardAssets/dashboard.png" />
@@ -35,7 +34,7 @@
             <Image url="@../assets/dashboardAssets/logout.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="1109.0" layoutY="11.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1115.0" layoutY="14.0" onMouseClicked="#btnAccountSettingAction" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/dashboardAssets/accountManage.png" />
          </image>
@@ -47,7 +46,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="267.0" layoutY="62.0" prefHeight="632.0" prefWidth="900.0" style="-fx-background-color: white;" />
+      <AnchorPane fx:id="rootPane" layoutX="267.0" layoutY="62.0" prefHeight="632.0" prefWidth="900.0" style="-fx-background-color: white;" />
       <Label fx:id="lblDate" layoutX="284.0" layoutY="19.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />

@@ -13,12 +13,12 @@
    <children>
       <ImageView fitHeight="652.0" fitWidth="1244.0" layoutX="-203.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/young%20woman%20imagining%20things%20while%20reading%20e-book.png" />
+            <Image url="@../assets/main.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="662.0" fitWidth="419.0" layoutX="722.0" layoutY="16.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/Rectangle%201.png" />
+            <Image url="@../assets/Rectangle.png" />
          </image>
       </ImageView>
       <Line endX="99.0" layoutX="943.0" layoutY="150.0" startX="-100.0">
@@ -64,7 +64,7 @@
             <Font name="AcanthusBlackSSK Bold" size="26.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#2b7c45" labelFloat="true" layoutX="759.0" layoutY="217.0" prefHeight="40.0" prefWidth="353.0" promptText="UserName">
+      <JFXTextField fx:id="txtAdminUserName" focusColor="#2b7c45" labelFloat="true" layoutX="759.0" layoutY="217.0" prefHeight="40.0" prefWidth="353.0" promptText="UserName">
          <font>
             <Font size="16.0" />
          </font></JFXTextField>
