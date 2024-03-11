@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BooksManageController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="40.0" layoutX="213.0" layoutY="10.0" strokeType="INSIDE" style="-fx-arc-width: 11; -fx-arc-height: 11;" width="475.0" />
+      <Label fx:id="lblBookId" layoutX="246.0" layoutY="93.0" prefHeight="30.0" prefWidth="137.0" text="id">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAuthor" layoutX="98.0" layoutY="266.0" prefHeight="31.0" prefWidth="228.0" promptText="Author">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="txtBookTitle" layoutX="98.0" layoutY="185.0" prefHeight="31.0" prefWidth="228.0" promptText="Title">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TableView layoutX="64.0" layoutY="342.0" prefHeight="200.0" prefWidth="767.0">
+        <columns>
+          <TableColumn prefWidth="122.66667175292969" text="Book-Id" />
+          <TableColumn minWidth="0.0" prefWidth="154.33334350585938" text="Title" />
+            <TableColumn prefWidth="165.66665649414062" text="Genre" />
+            <TableColumn prefWidth="157.3333740234375" text="Author" />
+            <TableColumn prefWidth="169.6666259765625" text="Branch_Available" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="42.0" fitWidth="128.0" layoutX="558.0" layoutY="566.0" onMouseClicked="#btnUpdateBookAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/update.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="128.0" layoutX="703.0" layoutY="565.0" onMouseClicked="#btnRemoveBookAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/removebook.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="173.0" layoutX="663.0" layoutY="94.0" onMouseClicked="#btnAddNewBookAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/addbook.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="350.0" layoutY="15.0" text="BOOK MANAGEMENT" textFill="#344e41">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Label>
+      <Label layoutX="98.0" layoutY="98.0" text="Available Book_ID :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbBookAvl" layoutX="378.0" layoutY="266.0" prefHeight="30.0" prefWidth="228.0" promptText="Availability" />
+      <Label layoutX="98.0" layoutY="155.0" text="Title">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="98.0" layoutY="237.0" text="Author">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="42.0" fitWidth="128.0" layoutX="701.0" layoutY="281.0" onMouseClicked="#btnSaveBookAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/add.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtGenre" layoutX="379.0" layoutY="185.0" prefHeight="31.0" prefWidth="228.0" promptText="Genre">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="379.0" layoutY="155.0" text="Genre">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbBranchId" layoutX="658.0" layoutY="184.0" prefHeight="30.0" prefWidth="144.0" promptText="Select Branch" />
+   </children>
+</AnchorPane>
