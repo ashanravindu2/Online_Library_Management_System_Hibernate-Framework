@@ -17,6 +17,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.bo.BOFactory;
+import org.example.bo.custom.UserBO;
 
 import java.io.IOException;
 
@@ -29,6 +31,8 @@ public class UserLoginController {
     public JFXRadioButton userSelect;
     public AnchorPane rootNodeUser;
     public AnchorPane rootNodeAdmin;
+    private final UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.USER);
+    public JFXTextField txtUserName;
 
     public void initialize(){
 
@@ -57,7 +61,7 @@ public class UserLoginController {
     }
 
     public void btnRegisterOnAction(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/userAccount_form.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/userRegister_form.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -97,6 +101,31 @@ public class UserLoginController {
         }
     }
 
-    public void btnLoginOnAction(ActionEvent actionEvent) {
+    public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
+       /* UserDTO userDTO = userBO.findCredential(txtUserName.getText());
+
+        System.out.println(txtUserName.getText());
+        System.out.println(textPassword.getText());
+
+        if (userDTO!=null){
+            if (userDTO.getPassword().equals(textPassword.getText())) {
+                if (userDTO.getGmail() != null && textPassword.getText().equals(userDTO.getPassword())) {*/
+                    Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/User_Dashboard_form.fxml"));
+                    Scene scene = new Scene(rootNode);
+                    Stage stage = (Stage) this.rootNodeUser.getScene().getWindow();
+                    stage.setTitle("Subarandu Online Library");
+                    stage.setScene(scene);
+
+                    TranslateTransition tt = new TranslateTransition(Duration.millis(800), scene.getRoot());
+                    tt.setFromY(-scene.getWidth());
+                    tt.setToY(0);
+                    tt.play();
+             /*   }
+            }else {
+                new Alert(Alert.AlertType.WARNING,"Invalid Password !").show();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING,"Empty value or Invalid UserName or Password !").show();
+        }*/
     }
 }

@@ -1,14 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.BranchForm"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BranchController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="40.0" layoutX="213.0" layoutY="10.0" strokeType="INSIDE" style="-fx-arc-width: 11; -fx-arc-height: 11;" width="475.0" />
+      <Label fx:id="lblBranchId" layoutX="246.0" layoutY="93.0" prefHeight="30.0" prefWidth="137.0" text="id">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtBranchLoacation" layoutX="98.0" layoutY="266.0" prefHeight="31.0" prefWidth="228.0" promptText="Location">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="txtBranchContact" layoutX="98.0" layoutY="185.0" prefHeight="31.0" prefWidth="228.0" promptText="Contact">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TableView layoutX="64.0" layoutY="342.0" prefHeight="200.0" prefWidth="767.0">
+        <columns>
+          <TableColumn prefWidth="156.0" text="Branch-Id" />
+          <TableColumn minWidth="0.0" prefWidth="185.0" text="Contact" />
+            <TableColumn prefWidth="225.0" text="Location" />
+            <TableColumn prefWidth="201.0" text="Branch_Available" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="42.0" fitWidth="128.0" layoutX="558.0" layoutY="566.0" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/update.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="128.0" layoutX="703.0" layoutY="565.0" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="173.0" layoutX="663.0" layoutY="94.0" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/addnew.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="343.0" layoutY="15.0" text="BRANCH MANAGEMENT" textFill="#344e41">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Label>
+      <JFXComboBox layoutX="375.0" layoutY="185.0" prefHeight="30.0" prefWidth="204.0" promptText="Availability" />
+      <Label layoutX="98.0" layoutY="98.0" text="Available Branch_ID :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="98.0" layoutY="155.0" text="Contact">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="98.0" layoutY="237.0" text="Locaion">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="42.0" fitWidth="128.0" layoutX="701.0" layoutY="281.0" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/add.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

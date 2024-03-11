@@ -36,7 +36,7 @@
             <Font name="AcanthusBlackSSK Bold" size="26.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#2b7c45" labelFloat="true" layoutX="759.0" layoutY="217.0" prefHeight="40.0" prefWidth="353.0" promptText="UserName">
+      <JFXTextField fx:id="txtUserName" focusColor="#2b7c45" labelFloat="true" layoutX="759.0" layoutY="217.0" prefHeight="40.0" prefWidth="353.0" promptText="UserName">
          <font>
             <Font size="16.0" />
          </font></JFXTextField>

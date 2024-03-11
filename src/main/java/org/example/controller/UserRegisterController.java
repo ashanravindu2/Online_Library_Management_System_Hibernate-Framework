@@ -4,12 +4,10 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import org.example.bo.BOFactory;
-import org.example.bo.custom.AdminBO;
 import org.example.bo.custom.UserBO;
-import org.example.dto.AdminDTO;
 import org.example.dto.UserDTO;
 
-public class UserAccountController {
+public class UserRegisterController {
     public JFXTextField txtPassword;
     public JFXTextField txtUserName;
     public JFXTextField txtEmail;

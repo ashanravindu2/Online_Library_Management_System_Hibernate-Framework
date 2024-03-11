@@ -1,6 +1,7 @@
 package org.example.bo;
 
 import org.example.bo.custom.impl.AdminBOImpl;
+import org.example.bo.custom.impl.BranchBOImpl;
 import org.example.bo.custom.impl.UserBOImpl;
 import org.example.dao.custom.impl.UserDAOImpl;
 
@@ -21,6 +22,8 @@ public class BOFactory {
                 return new AdminBOImpl();
             case USER:
                 return new UserBOImpl();
+            case BRANCH:
+                return new BranchBOImpl();
 
             default:
                 return null;
@@ -28,6 +31,6 @@ public class BOFactory {
     }
 
     public enum BOTypes {
-        ADMIN, USER, STUDENT, RESERVATION, KEY_PAYMENTS, LOGIN
+        ADMIN, USER, BRANCH, RESERVATION, KEY_PAYMENTS, LOGIN
     }
 }

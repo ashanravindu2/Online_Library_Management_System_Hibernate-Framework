@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
     private Session session;
@@ -61,5 +62,15 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void setSession(Session session) {
         this.session =  session;
+    }
+
+    @Override
+    public boolean delete(String s) {
+        return false;
+    }
+
+    @Override
+    public List<User> getAll() {
+        return null;
     }
 }

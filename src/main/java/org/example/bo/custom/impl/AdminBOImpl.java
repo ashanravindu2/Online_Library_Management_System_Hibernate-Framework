@@ -8,6 +8,8 @@ import org.example.dto.AdminDTO;
 import org.example.entity.Admin;
 import org.hibernate.Session;
 
+import java.util.List;
+
 public class AdminBOImpl implements AdminBO {
 
     private final AdminDAO adminDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.ADMINDAO);
@@ -35,7 +37,17 @@ public class AdminBOImpl implements AdminBO {
     }
 
     @Override
+    public boolean delete(String s) {
+        return false;
+    }
+
+    @Override
     public AdminDTO find(String s) {
+        return null;
+    }
+
+    @Override
+    public List<AdminDTO> getAll() {
         return null;
     }
 

@@ -2,6 +2,8 @@ package org.example.dao;
 
 import org.hibernate.Session;
 
+import java.util.List;
+
 public interface CrudDAO <T,J> extends SuperDAO{
     boolean save(T t);
 
@@ -11,5 +13,8 @@ public interface CrudDAO <T,J> extends SuperDAO{
 
     void setSession(Session session);
 
+    boolean delete(J j);
+
+    List<T> getAll();
 
 }

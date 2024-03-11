@@ -3,13 +3,11 @@ package org.example.controller;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
-import javafx.stage.Stage;
 import org.example.bo.BOFactory;
 import org.example.bo.custom.AdminBO;
-import org.example.bo.custom.UserBO;
 import org.example.dto.AdminDTO;
 
-public class AdminAccountController {
+public class AdminRegisterController {
     public JFXTextField txtPassword;
     public JFXTextField txtUserName;
     public JFXTextField txtEmail;

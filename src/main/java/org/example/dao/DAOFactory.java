@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import org.example.dao.custom.impl.AdminDAOImpl;
+import org.example.dao.custom.impl.BranchDAOImpl;
 import org.example.dao.custom.impl.UserDAOImpl;
 
 public class DAOFactory {
@@ -9,7 +10,7 @@ public class DAOFactory {
     private DAOFactory(){}
 
     public enum DAOType{
-        ADMINDAO,USERDAO
+        ADMINDAO,USERDAO,BRANCHDAO
     }
 
     public static DAOFactory getInstance(){
@@ -22,6 +23,8 @@ public class DAOFactory {
                 return (T) new AdminDAOImpl();
             case USERDAO:
                 return (T) new UserDAOImpl();
+            case BRANCHDAO:
+                return (T) new BranchDAOImpl();
 
             default:
                 return null;

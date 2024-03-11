@@ -7,30 +7,25 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="694.0" prefWidth="1167.0" style="-fx-background-color: #344e41;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.AdminDashboardController">
+<AnchorPane prefHeight="694.0" prefWidth="1167.0" style="-fx-background-color: #344e41;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.UserDashboardController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#344e41" height="694.0" layoutX="267.0" layoutY="-1.0" strokeType="INSIDE" width="900.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="61.0" onMouseClicked="#btnDashBoardAction" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="61.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/dashboardAssets/dashboard.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="33.0" layoutY="142.0" onMouseClicked="#btnBranchOnAction" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="33.0" layoutY="142.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/dashboardAssets/branch.png" />
+            <Image url="@../assets/dashboardAssets/barrowbooks.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="170.0" fitWidth="200.0" layoutX="34.0" layoutY="224.0" onMouseClicked="#btnBooksOnAction" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="170.0" fitWidth="200.0" layoutX="33.0" layoutY="224.0" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/dashboardAssets/books.png" />
+            <Image url="@../assets/dashboardAssets/returnbook.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="170.0" fitWidth="200.0" layoutX="34.0" layoutY="307.0" onMouseClicked="#btnUserManageOnAction" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/dashboardAssets/user.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="170.0" fitWidth="200.0" layoutX="35.0" layoutY="620.0" onMouseClicked="#btnLogOutAction" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="170.0" fitWidth="200.0" layoutX="33.0" layoutY="620.0" onMouseClicked="#btnLogOutAction" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/dashboardAssets/logout.png" />
          </image>
@@ -47,11 +42,16 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="rootPane" layoutX="267.0" layoutY="62.0" prefHeight="632.0" prefWidth="900.0" style="-fx-background-color: white; -fx-background-radius: 11;" />
+      <AnchorPane fx:id="rootPane" layoutX="267.0" layoutY="62.0" prefHeight="632.0" prefWidth="900.0" style="-fx-background-color: white;" />
       <Label fx:id="lblDate" layoutX="284.0" layoutY="19.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1066.0" layoutY="14.0" onMouseClicked="#btnAccountSettingAction" onMouseEntered="#mouseEnterButtonAction" onMouseExited="#mouseExitButtonAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/notify.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

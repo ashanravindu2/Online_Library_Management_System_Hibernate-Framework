@@ -12,6 +12,8 @@ import org.example.entity.Admin;
 import org.example.entity.User;
 import org.hibernate.Session;
 
+import java.util.List;
+
 public class UserBOImpl implements UserBO {
 
     private final UserDAO userDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.USERDAO);
@@ -21,7 +23,7 @@ public class UserBOImpl implements UserBO {
         Session session = Configure.getInstance().getSession();
         userDAO.setSession(session);
         return userDAO.save(new User(
-                userDTO.getGmail(),
+                userDTO.getName(),
                 userDTO.getName(),
                 userDTO.getPassword()
         ));
@@ -39,7 +41,17 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
+    public boolean delete(String s) {
+        return false;
+    }
+
+    @Override
     public UserDTO find(String s) {
+        return null;
+    }
+
+    @Override
+    public List<UserDTO> getAll() {
         return null;
     }
 
@@ -53,6 +65,7 @@ public class UserBOImpl implements UserBO {
                     user.getName(),
                     user.getGmail(),
                     user.getPassword()
+
             );
         }else {
             return null;

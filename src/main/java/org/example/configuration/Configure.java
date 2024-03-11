@@ -2,6 +2,7 @@
 package org.example.configuration;
 
 import org.example.entity.Admin;
+import org.example.entity.Branch;
 import org.example.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,8 +26,9 @@ public class Configure {
         }
 
         configuration.
+                addAnnotatedClass(User.class).
                 addAnnotatedClass(Admin.class).
-                addAnnotatedClass(User.class);
+                addAnnotatedClass(Branch.class);
 
         factory=configuration.setProperties(properties).buildSessionFactory();
     }
