@@ -1,6 +1,7 @@
 package org.example.bo;
 
 import org.example.bo.custom.impl.AdminBOImpl;
+import org.example.bo.custom.impl.BooksBOImpl;
 import org.example.bo.custom.impl.BranchBOImpl;
 import org.example.bo.custom.impl.UserBOImpl;
 import org.example.dao.custom.impl.UserDAOImpl;
@@ -11,26 +12,29 @@ public class BOFactory {
     private BOFactory() {
 
     }
+    public enum BOTypes {
+        ADMIN, USER, BRANCH,BOOKS
+    }
 
     public static BOFactory getInstance() {
         return boFactory == null ? boFactory = new BOFactory() : boFactory;
     }
 
-    public SuperBO getBO(BOTypes type) {
+    public <T extends SuperBO>T getBO(BOTypes type) {
         switch (type) {
             case ADMIN:
-                return new AdminBOImpl();
+                return (T) new AdminBOImpl();
             case USER:
-                return new UserBOImpl();
+                return (T) new UserBOImpl();
             case BRANCH:
-                return new BranchBOImpl();
+                return (T) new BranchBOImpl();
+            case BOOKS:
+                return (T) new BooksBOImpl();
 
             default:
                 return null;
         }
     }
 
-    public enum BOTypes {
-        ADMIN, USER, BRANCH, RESERVATION, KEY_PAYMENTS, LOGIN
-    }
+
 }

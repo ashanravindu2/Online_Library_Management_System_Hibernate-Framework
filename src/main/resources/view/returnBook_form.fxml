@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ReturnBookController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="40.0" layoutX="213.0" layoutY="10.0" strokeType="INSIDE" style="-fx-arc-width: 11; -fx-arc-height: 11;" width="475.0" />
+      <Label fx:id="lblBookId" layoutX="233.0" layoutY="93.0" prefHeight="30.0" prefWidth="137.0" text="id">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TableView layoutX="64.0" layoutY="261.0" prefHeight="291.0" prefWidth="767.0">
+        <columns>
+          <TableColumn prefWidth="122.66667175292969" text="Book-Id" />
+          <TableColumn minWidth="0.0" prefWidth="154.33334350585938" text="Title" />
+            <TableColumn prefWidth="157.3333740234375" text="Genre" />
+            <TableColumn prefWidth="170.66668701171875" text="Barrow_Date" />
+            <TableColumn prefWidth="159.33331298828125" text="Return_Date" />
+        </columns>
+      </TableView>
+      <Label layoutX="374.0" layoutY="15.0" text="RETURN BOOKS" textFill="#344e41">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Label>
+      <Label layoutX="98.0" layoutY="98.0" text="Select Book_ID :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="42.0" fitWidth="128.0" layoutX="704.0" layoutY="570.0" onMouseClicked="#btnReturnAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/returnBook%20(1).png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblBookId1" layoutX="233.0" layoutY="149.0" prefHeight="30.0" prefWidth="137.0" text="id">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="98.0" layoutY="154.0" text="Book Title :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblBookId11" layoutX="233.0" layoutY="207.0" prefHeight="30.0" prefWidth="137.0" text="id">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="98.0" layoutY="212.0" text="Return Due Date :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

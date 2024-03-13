@@ -13,6 +13,7 @@ import org.example.entity.Branch;
 import org.hibernate.Session;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BranchBOImpl implements BranchBO {
@@ -25,8 +26,9 @@ public class BranchBOImpl implements BranchBO {
         branchDAO.setSession(session);
         return branchDAO.save(new Branch(
                 branchDTO.getBranch_id(),
-                branchDTO.getLocation(),
-                branchDTO.getBranch_contact()
+                branchDTO.getBranch_location(),
+                branchDTO.getBranch_contact(),
+                branchDTO.getBranch_avl()
         ));
     }
 
@@ -36,14 +38,17 @@ public class BranchBOImpl implements BranchBO {
         branchDAO.setSession(session);
         return branchDAO.update(new Branch(
                 branchDTO.getBranch_id(),
-                branchDTO.getLocation(),
-                branchDTO.getBranch_contact()
+                branchDTO.getBranch_location(),
+                branchDTO.getBranch_contact(),
+                branchDTO.getBranch_avl()
         ));
     }
 
     @Override
-    public boolean delete(String s) {
-        return false;
+    public boolean delete(String branchId) {
+        Session session = Configure.getInstance().getSession();
+        branchDAO.setSession(session);
+        return branchDAO.delete(branchId);
     }
 
     @Override
@@ -53,7 +58,18 @@ public class BranchBOImpl implements BranchBO {
 
     @Override
     public List<BranchDTO> getAll() {
-        return null;
+        Session session = Configure.getInstance().getSession();
+        branchDAO.setSession(session);
+        List<BranchDTO> branchDTOS = new ArrayList<>();
+        for (Branch branch : branchDAO.getAll()){
+            branchDTOS.add(new BranchDTO(
+                    branch.getBranch_id(),
+                    branch.getLocation(),
+                    branch.getBranch_contact(),
+                    branch.getBranch_avl()
+            ));
+        }
+        return branchDTOS;
     }
 
     @Override
@@ -65,7 +81,8 @@ public class BranchBOImpl implements BranchBO {
             return new BranchDTO(
                     branch.getBranch_id(),
                     branch.getLocation(),
-                    branch.getBranch_contact()
+                    branch.getBranch_contact(),
+                    branch.getBranch_avl()
 
             );
         }else {
@@ -78,7 +95,7 @@ public class BranchBOImpl implements BranchBO {
         Session session = Configure.getInstance().getSession();
         branchDAO.setSession(session);
         String branchid = branchDAO.getNextID();
-        String nextBranchId = "B001";
+        String nextBranchId = "B000";
         if(branchid != null) {
             branchid = branchid.substring(1, branchid.length());
             int intId = Integer.parseInt(branchid);

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BooksManageController">
+<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BooksManageController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="40.0" layoutX="213.0" layoutY="10.0" strokeType="INSIDE" style="-fx-arc-width: 11; -fx-arc-height: 11;" width="475.0" />
       <Label fx:id="lblBookId" layoutX="246.0" layoutY="93.0" prefHeight="30.0" prefWidth="137.0" text="id">
@@ -28,13 +24,13 @@
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TableView layoutX="64.0" layoutY="342.0" prefHeight="200.0" prefWidth="767.0">
+      <TableView fx:id="tblBooks" layoutX="64.0" layoutY="342.0" prefHeight="200.0" prefWidth="767.0">
         <columns>
-          <TableColumn prefWidth="122.66667175292969" text="Book-Id" />
-          <TableColumn minWidth="0.0" prefWidth="154.33334350585938" text="Title" />
-            <TableColumn prefWidth="165.66665649414062" text="Genre" />
-            <TableColumn prefWidth="157.3333740234375" text="Author" />
-            <TableColumn prefWidth="169.6666259765625" text="Branch_Available" />
+          <TableColumn fx:id="colBookId" prefWidth="122.66667175292969" text="Book-Id" />
+          <TableColumn fx:id="colBookTitle" minWidth="0.0" prefWidth="154.33334350585938" text="Title" />
+            <TableColumn fx:id="colBookGenre" prefWidth="165.66665649414062" text="Genre" />
+            <TableColumn fx:id="colBookAuthor" prefWidth="157.3333740234375" text="Author" />
+            <TableColumn fx:id="colBookAvl" prefWidth="169.6666259765625" text="Branch_Available" />
         </columns>
       </TableView>
       <ImageView fitHeight="42.0" fitWidth="128.0" layoutX="558.0" layoutY="566.0" onMouseClicked="#btnUpdateBookAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
@@ -76,7 +72,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="42.0" fitWidth="128.0" layoutX="701.0" layoutY="281.0" onMouseClicked="#btnSaveBookAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btnBookSave" fitHeight="42.0" fitWidth="128.0" layoutX="701.0" layoutY="281.0" onMouseClicked="#btnSaveBookAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/dashboardAssets/add.png" />
          </image>

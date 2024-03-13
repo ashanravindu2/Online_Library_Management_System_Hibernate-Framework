@@ -81,13 +81,13 @@ public class UserDashboardController {
     }
 
     public void btnAccountSettingAction(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/userAccountSetting_form.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setResizable(false);
         stage.centerOnScreen();
-        stage.setTitle("Account Setting");
+        stage.setTitle("User Account Setting");
         stage.show();
     }
 
@@ -108,5 +108,29 @@ public class UserDashboardController {
                 }
             }
         });
+    }
+
+    public void btnDashboardOnAction(MouseEvent mouseEvent) {
+    }
+
+    public void btnBarrowBookOnAction(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/barrowBook_form.fxml"));
+        this.rootPane.getChildren().clear();
+        this.rootPane.getChildren().add(root);
+    }
+
+    public void btnReturnBookOnAction(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/returnBook_form.fxml"));
+        this.rootPane.getChildren().clear();
+        this.rootPane.getChildren().add(root);
+    }
+
+    public void btnNotificationOnAction(MouseEvent mouseEvent) {
+    }
+
+    public void btnBookTransacOnAction(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/book_Transac_form.fxml"));
+        this.rootPane.getChildren().clear();
+        this.rootPane.getChildren().add(root);
     }
 }

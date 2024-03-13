@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -93,7 +94,7 @@ public class AdminDashboardController {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.centerOnScreen();
-        stage.setTitle("Account Setting");
+        stage.setTitle("Admin Account Setting");
         stage.show();
     }
 
@@ -124,9 +125,14 @@ public class AdminDashboardController {
         this.rootPane.getChildren().add(root);
     }
 
-    public void btnBooksOnAction(MouseEvent mouseEvent) {
+    public void btnBooksOnAction(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/bookManage_form.fxml"));
+        this.rootPane.getChildren().clear();
+        this.rootPane.getChildren().add(root);
+
     }
 
     public void btnUserManageOnAction(MouseEvent mouseEvent) {
+
     }
 }

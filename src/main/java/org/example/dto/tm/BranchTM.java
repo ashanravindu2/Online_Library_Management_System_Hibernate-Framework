@@ -1,4 +1,4 @@
-package org.example.dto;
+package org.example.dto.tm;
 
 
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BranchDTO {
+public class BranchTM {
 
     private String branch_id;
     private String branch_location;
