@@ -5,15 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-
+@AllArgsConstructor
 @Entity
 @Table(name = "books")
-public class Books implements SuperEntity{
+public class Books implements Serializable {
     @Id
     @Column(name = "books_id" ,length = 50)
     private String books_id;
@@ -30,8 +30,10 @@ public class Books implements SuperEntity{
     @Column(name = "books_avl" , length = 40)
     private String books_avl;
 
-    @ManyToOne
+
+   @ManyToOne
     @JoinColumn(name = "branch_id")
     private Branch branch;
+
 
 }

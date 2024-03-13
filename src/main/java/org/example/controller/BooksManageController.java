@@ -34,7 +34,7 @@ public class BooksManageController {
     private final BranchBO branchBO = (BranchBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.BRANCH);
     public ImageView btnBookSave;
 
-
+    private ObservableList<String> idList = FXCollections.observableArrayList();
     public void initialize() {
         setData();
         setCellValueFactory();
@@ -110,9 +110,10 @@ public class BooksManageController {
     }
 
     private void setData() {
-        branchBO.getAll().forEach(branchDTO -> {
-            cmbBranchId.getItems().add(branchDTO.getBranch_id());
-        });
+        for (String ids : booksBO.getBranchIds()){
+            idList.add(ids);
+        }
+        cmbBranchId.setItems(idList);
         cmbBookAvl.getItems().add("Yes");
     }
 
@@ -143,12 +144,7 @@ public class BooksManageController {
                 cmbBookAvl.getValue().toString(),
                 cmbBranchId.getValue().toString()
         ));
-       /* System.out.println( cmbBranchId.getValue().toString());
-        System.out.println( cmbBookAvl.getValue().toString());
-        System.out.println( lblBookId.getText());
-        System.out.println( txtBookTitle.getText());
-        System.out.println( txtAuthor.getText());
-        System.out.println( txtGenre.getText());*/
+
         if (update){
             new Alert(Alert.AlertType.CONFIRMATION,"Book Details Update Successful !").show();
         }else {

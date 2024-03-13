@@ -60,7 +60,7 @@ public class BooksBOImpl implements BooksBO {
                     booksDTO.getBooks_author(),
                     booksDTO.getBooks_genre(),
                     booksDTO.getBooks_avl(),
-                    booksDAO.find(booksDTO.getBooks_id()).getBranch()
+                    branches
             ));
         }catch (Exception e) {
             e.printStackTrace();
@@ -118,6 +118,17 @@ public class BooksBOImpl implements BooksBO {
         }else {
             return null;
         }
+    }
+
+    @Override
+    public List<String> getBranchIds() {
+        List<String> idList = new ArrayList<>();
+        Session session = Configure.getInstance().getSession();
+        branchDAO.setSession(session);
+        for (Branch branch : branchDAO.getAll()) {
+            idList.add(branch.getBranch_id());
+        }
+        return idList;
     }
 
     @Override

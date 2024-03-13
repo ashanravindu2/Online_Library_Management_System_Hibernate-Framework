@@ -64,7 +64,7 @@ public class BranchBOImpl implements BranchBO {
         for (Branch branch : branchDAO.getAll()){
             branchDTOS.add(new BranchDTO(
                     branch.getBranch_id(),
-                    branch.getLocation(),
+                    branch.getBranch_location(),
                     branch.getBranch_contact(),
                     branch.getBranch_avl()
             ));
@@ -80,7 +80,7 @@ public class BranchBOImpl implements BranchBO {
         if (branch!=null){
             return new BranchDTO(
                     branch.getBranch_id(),
-                    branch.getLocation(),
+                    branch.getBranch_location(),
                     branch.getBranch_contact(),
                     branch.getBranch_avl()
 
