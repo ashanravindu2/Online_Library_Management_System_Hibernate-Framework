@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.bo.BOFactory;
 import org.example.bo.custom.AdminBO;
+import org.example.dto.AdminDTO;
 
 import java.io.IOException;
 
@@ -69,32 +71,33 @@ public class AdminLogInController {
     }
 
     public void btnLogInAction(ActionEvent actionEvent) throws IOException {
-    /*  AdminDTO adminDTO = adminBO.findCredential(txtAdminUserName.getText());
+    AdminDTO adminDTO = adminBO.findCredential(txtAdminUserName.getText());
 
         System.out.println(txtAdminUserName.getText());
         System.out.println(textPassword.getText());
 
+            if (adminDTO != null) {
+                if (adminDTO.getPassword().equals(textPassword.getText())) {
+                    if (adminDTO.getGmail() != null && textPassword.getText().equals(adminDTO.getPassword())) {
+                        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/admin_dashboard_form.fxml"));
+                        Scene scene = new Scene(rootNode);
+                        Stage stage = (Stage) this.rootNodeAdmin.getScene().getWindow();
+                        stage.setTitle("Subarandu Online Library");
+                        stage.setScene(scene);
 
-        if (adminDTO!=null) {
-            if (adminDTO.getPassword().equals(textPassword.getText())) {
-                if (adminDTO.getGmail() != null && textPassword.getText().equals(adminDTO.getPassword())) {*/
-                    Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/admin_dashboard_form.fxml"));
-                    Scene scene = new Scene(rootNode);
-                    Stage stage = (Stage) this.rootNodeAdmin.getScene().getWindow();
-                    stage.setTitle("Subarandu Online Library");
-                    stage.setScene(scene);
-
-                    TranslateTransition tt = new TranslateTransition(Duration.millis(800), scene.getRoot());
-                    tt.setFromY(-scene.getWidth());
-                    tt.setToY(0);
-                    tt.play();
-        /*        }
+                        TranslateTransition tt = new TranslateTransition(Duration.millis(800), scene.getRoot());
+                        tt.setFromY(-scene.getWidth());
+                        tt.setToY(0);
+                        tt.play();
+                    }else {
+                        new Alert(Alert.AlertType.WARNING, "Empty value !").show();
+                    }
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Invalid Password !").show();
+                }
             } else {
-                new Alert(Alert.AlertType.WARNING,"Invalid Password !").show();
+                new Alert(Alert.AlertType.WARNING, "Empty value or Invalid UserNAme or Password !").show();
             }
-        }else {
-            new Alert(Alert.AlertType.WARNING, "Empty value or Invalid UserNAme or Password !").show();
-        }*/
     }
 
 
