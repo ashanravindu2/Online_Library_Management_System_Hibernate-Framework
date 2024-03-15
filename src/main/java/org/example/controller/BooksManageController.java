@@ -16,6 +16,7 @@ import org.example.bo.custom.BooksBO;
 import org.example.bo.custom.BranchBO;
 import org.example.dto.BooksDTO;
 import org.example.dto.BranchDTO;
+import org.example.dto.tm.BooksTM;
 
 public class BooksManageController {
     public Label lblBookId;
@@ -86,9 +87,9 @@ public class BooksManageController {
     }
 
     private void setTable() {
-        ObservableList<BooksDTO> booksDTOS = FXCollections.observableArrayList();
+        ObservableList<BooksTM> booksTMS = FXCollections.observableArrayList();
         for (BooksDTO booksDTO : booksBO.getAll()){
-            booksDTOS.add(new BooksDTO(
+            booksTMS.add(new BooksTM(
                     booksDTO.getBooks_id(),
                     booksDTO.getBooks_title(),
                     booksDTO.getBooks_author(),
@@ -97,7 +98,7 @@ public class BooksManageController {
                     booksDTO.getBranch_id()
             ));
         }
-        tblBooks.setItems(booksDTOS);
+        tblBooks.setItems(booksTMS);
     }
 
     private void setCellValueFactory(){

@@ -58,5 +58,15 @@
             <Image url="@../assets/dashboardAssets/transac.png" />
          </image>
       </ImageView>
+      <Label fx:id="lblUserName" layoutX="930.0" layoutY="18.0" text="Label" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="886.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/accountManage.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

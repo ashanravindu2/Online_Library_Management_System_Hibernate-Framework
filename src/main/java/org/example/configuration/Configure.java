@@ -1,10 +1,7 @@
 
 package org.example.configuration;
 
-import org.example.entity.Admin;
-import org.example.entity.Books;
-import org.example.entity.Branch;
-import org.example.entity.User;
+import org.example.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -30,7 +27,9 @@ public class Configure {
                 addAnnotatedClass(User.class).
                 addAnnotatedClass(Admin.class).
                 addAnnotatedClass(Branch.class).
-                addAnnotatedClass(Books.class);
+                addAnnotatedClass(Books.class).
+                addAnnotatedClass(BookTransaction.class);
+
         factory=configuration.setProperties(properties).buildSessionFactory();
     }
 

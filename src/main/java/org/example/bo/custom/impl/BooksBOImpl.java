@@ -6,8 +6,10 @@ import org.example.configuration.Configure;
 import org.example.dao.DAOFactory;
 import org.example.dao.custom.BooksDAO;
 import org.example.dao.custom.BranchDAO;
+import org.example.dao.custom.QuaryDAO;
 import org.example.dto.BooksDTO;
 import org.example.dto.BranchDTO;
+import org.example.entity.BookTransaction;
 import org.example.entity.Books;
 import org.example.entity.Branch;
 import org.hibernate.Session;
@@ -19,7 +21,7 @@ public class BooksBOImpl implements BooksBO {
 
  BooksDAO booksDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.BOOKSDAO);
  BranchDAO branchDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.BRANCHDAO);
-
+ QuaryDAO quaryDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.QUARYDAO);
     @Override
     public boolean save(BooksDTO booksDTO) {
 
@@ -154,5 +156,27 @@ public class BooksBOImpl implements BooksBO {
         }
         return nextBooksId;
     }
+
+    @Override
+    public List<BooksDTO> isSearchBookTitle(String value) {
+        Session session = Configure.getInstance().getSession();
+        booksDAO.setSession(session);
+        return booksDAO.isSearchTitle(value);
+    }
+
+    @Override
+    public String IsavailableOrNotBook(String branchId, String bookTitle) {
+        Session session = Configure.getInstance().getSession();
+        quaryDAO.setSession(session);
+        return quaryDAO.isAvailableOrNot(branchId,bookTitle);
+    }
+
+    @Override
+    public boolean bookAvlUpdate(String bookId, String branchId) {
+        Session session = Configure.getInstance().getSession();
+        quaryDAO.setSession(session);
+        return quaryDAO.bookAvlUpdate(bookId,branchId);
+    }
+
 
 }

@@ -1,9 +1,6 @@
 package org.example.dao;
 
-import org.example.dao.custom.impl.AdminDAOImpl;
-import org.example.dao.custom.impl.BooksDAOImpl;
-import org.example.dao.custom.impl.BranchDAOImpl;
-import org.example.dao.custom.impl.UserDAOImpl;
+import org.example.dao.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -11,7 +8,7 @@ public class DAOFactory {
     private DAOFactory(){}
 
     public enum DAOType{
-        ADMINDAO,USERDAO,BRANCHDAO,BOOKSDAO
+        ADMINDAO,USERDAO,BRANCHDAO,BOOKSDAO,BOOKTRANSACTIONDAO,QUARYDAO
     }
 
     public static DAOFactory getInstance(){
@@ -28,6 +25,10 @@ public class DAOFactory {
                 return (T) new BranchDAOImpl();
             case BOOKSDAO:
                 return (T) new BooksDAOImpl();
+            case BOOKTRANSACTIONDAO:
+                return (T) new BookTransactionDAOImpl();
+            case QUARYDAO:
+                return (T) new QuaryDAOImpl();
 
             default:
                 return null;

@@ -2,6 +2,7 @@ package org.example.controller;
 
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,6 +28,9 @@ public class UserDashboardController {
     public AnchorPane rootPane;
     private Thread thread;
     boolean run = true;
+    @FXML
+    private Label lblUserName;
+
 
 
     public void initialize() {
@@ -114,7 +119,18 @@ public class UserDashboardController {
     }
 
     public void btnBarrowBookOnAction(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/barrowBook_form.fxml"));
+
+    /*    Parent root = FXMLLoader.load(this.getClass().getResource("/view/barrowBook_form.fxml"));
+        this.rootPane.getChildren().clear();
+        this.rootPane.getChildren().add(root);
+        BarrowBookController controller = fxmlLoader.getController();
+        controller.setUserName(lblUserName.getText());*/
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/barrowBook_form.fxml"));
+        Parent root = fxmlLoader.load();
+        BarrowBookController controller = fxmlLoader.getController();
+        controller.setUserName(lblUserName.getText());
         this.rootPane.getChildren().clear();
         this.rootPane.getChildren().add(root);
     }
@@ -132,5 +148,9 @@ public class UserDashboardController {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/book_Transac_form.fxml"));
         this.rootPane.getChildren().clear();
         this.rootPane.getChildren().add(root);
+    }
+
+    public void setUserName(String text) {
+        lblUserName.setText(text);
     }
 }

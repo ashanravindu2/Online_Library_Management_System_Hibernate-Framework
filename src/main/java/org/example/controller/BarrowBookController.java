@@ -1,17 +1,187 @@
 package org.example.controller;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.animation.ScaleTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import org.example.bo.BOFactory;
+import org.example.bo.custom.BookTransactionBO;
+import org.example.bo.custom.BooksBO;
+import org.example.dto.BarrowBooksDTO;
+import org.example.dto.BookTransactionDTO;
+import org.example.dto.BooksDTO;
+import org.example.dto.tm.BarrowBooksTM;
+import org.example.dto.tm.BooksTM;
+
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 public class BarrowBookController {
-    public void btnBarrowAction(MouseEvent mouseEvent) {
+
+    public TableView tblBook;
+    @FXML
+    private JFXComboBox<String> cmbBranchId;
+
+    @FXML
+    private JFXComboBox<String> cmbBookId;
+
+    @FXML
+    private TableColumn<?, ?> colAuthor;
+
+    @FXML
+    private TableColumn<?, ?> colBarrowDate;
+
+    @FXML
+    private TableColumn<?, ?> colBookId;
+
+    @FXML
+    private TableColumn<?, ?> colGenre;
+
+    @FXML
+    private TableColumn<?, ?> colReturnDate;
+
+    @FXML
+    private TableColumn<?, ?> colTitle;
+
+    @FXML
+    private TableColumn<?, ?> colBranchId;
+
+    @FXML
+    private Label lblBookAuthor;
+
+    @FXML
+    private ImageView btnsearch;
+
+
+    @FXML
+    private Label lblBookAvl;
+
+
+    @FXML
+    private Label lblGenre;
+    
+    @FXML
+    private TextField txtBookTitle;
+
+    private final BookTransactionBO bookTransactionBO = (BookTransactionBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.BOOKTRANSACTION);
+    private final BooksBO booksBO = (BooksBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.BOOKS);
+    private ObservableList<String> branchesAvl = FXCollections.observableArrayList();
+    private ObservableList<String> bookIdAvl = FXCollections.observableArrayList();
+    private String transacId;
+    private String userName;
+
+
+    public void initialize() {
+        setDisableItemTrue();
+        generateTransacId();
+   setCellValueFactory();
+        setTable();
     }
 
-    public void mouseEnterAction(MouseEvent mouseEvent) {
+    private void setTable() {
+        ObservableList<BarrowBooksDTO> booksTMS = FXCollections.observableArrayList();
+        for (BarrowBooksDTO booksDTO : bookTransactionBO.getAllBarroeBooks("ashan")) {
+            booksTMS.add(new BarrowBooksDTO(
+                    booksDTO.getBooks_id(),
+                    booksDTO.getBooks_title(),
+                    booksDTO.getBooks_genre(),
+                    booksDTO.getBarrow_date(),
+                    booksDTO.getReturn_date(),
+                    booksDTO.getBranch_id()
+            ));
+        }
+        tblBook.setItems(booksTMS);
+    }
+
+    private void setCellValueFactory() {
+        colBookId.setCellValueFactory(new PropertyValueFactory<>("books_id"));
+        colTitle.setCellValueFactory(new PropertyValueFactory<>("books_title"));
+        colGenre.setCellValueFactory(new PropertyValueFactory<>("books_genre"));
+        colBarrowDate.setCellValueFactory(new PropertyValueFactory<>("barrow_date"));
+        colReturnDate.setCellValueFactory(new PropertyValueFactory<>("return_date"));
+        colBranchId.setCellValueFactory(new PropertyValueFactory<>("branch_id"));
+    }
+
+    private void generateTransacId() {
+        String transacId = bookTransactionBO.generateTransacId();
+        this.transacId=transacId;
+    }
+
+    private void setDisableItemTrue() {
+        cmbBranchId.setDisable(true);
+        cmbBookId.setDisable(true);
+    }
+
+
+    @FXML
+    void btnBarrowAction(MouseEvent event) {
+        String branchId = cmbBranchId.getValue();
+        String bookId = cmbBookId.getValue();
+        String transacId = this.transacId;
+        Date returnDate = Date.valueOf(LocalDate.now().plusDays(30).toString());
+        String userName = this.userName;
+
+        boolean isUpdate = booksBO.bookAvlUpdate(bookId,branchId);
+        if (isUpdate==true) {
+            boolean isBarrow = bookTransactionBO.save(new BookTransactionDTO(transacId,returnDate,bookId,userName));
+            if (isBarrow==true) {
+                System.out.println("suceefulecef");
+            }
+        }
+
+
+    }
+    public boolean getAvilableBook(){
+        List<BooksDTO> booksDTOS = booksBO.isSearchBookTitle(txtBookTitle.getText());
+        if (booksDTOS.isEmpty()) {
+
+            return false;
+        }else {
+            for (BooksDTO booksDTO : booksDTOS) {
+                lblBookAvl.setText(booksDTO.getBooks_author());//avl
+                lblGenre.setText(booksDTO.getBooks_genre());//genre
+                txtBookTitle.setText(booksDTO.getBooks_avl());//title
+                lblBookAuthor.setText(booksDTO.getBooks_title());//author
+                branchesAvl.add(booksDTO.getBranch_id());
+                bookIdAvl.add(booksDTO.getBooks_id()) ;
+                cmbBranchId.setItems(branchesAvl);//branch
+                cmbBookId.setItems(bookIdAvl);//book id
+            }
+            return true;
+        }
+
+
+    }
+
+    @FXML
+    void btnSearchAction(MouseEvent event) {
+        boolean isAvl = getAvilableBook();
+        if (isAvl) {
+            cmbBranchId.setDisable(false);
+            cmbBookId.setDisable(false);
+            btnsearch.setDisable(true);
+            btnsearch.setOpacity(0.5);
+            lblBookAvl.setStyle("-fx-text-fill: green");
+        } else if (isAvl==false) {
+            btnsearch.setDisable(false);
+            btnsearch.setOpacity(1);
+            NotFoundComponent();
+        }
+    }
+
+
+
+    @FXML
+    void mouseEnterAction(MouseEvent mouseEvent) {
         if (mouseEvent.getSource() instanceof ImageView) {
             ImageView icon = (ImageView) mouseEvent.getSource();
 
@@ -38,5 +208,31 @@ public class BarrowBookController {
             scaleT.play();
             icon.setEffect(null);
         }
+    }
+    @FXML
+    void searchTxtClickSearchBtnDisablefalse(MouseEvent event) {
+        cmbBranchId.setDisable(true);
+        cmbBookId.setDisable(true);
+        btnsearch.setDisable(false);
+        btnsearch.setOpacity(1);
+        clearComponent();
+    }
+    public void clearComponent(){
+        lblBookAvl.setText("");
+        lblGenre.setText("");
+        txtBookTitle.setText("");
+        lblBookAuthor.setText("");
+        cmbBranchId.getItems().clear();
+        cmbBookId.getItems().clear();
+    }
+    public void NotFoundComponent(){
+        lblBookAvl.setStyle("-fx-text-fill: red");
+        lblBookAvl.setText("This book can't be found");
+
+    }
+
+
+    public void setUserName(String userName) {
+       this.userName = userName;
     }
 }

@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data
@@ -35,5 +37,28 @@ public class Books implements Serializable {
     @JoinColumn(name = "branch_id")
     private Branch branch;
 
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "books")
+    List<BookTransaction> bookTransactions = new ArrayList<>();
 
+    public Books(String books_id, String books_title, String books_author, String books_genre, String books_avl, Branch branch) {
+        this.books_id = books_id;
+        this.books_title = books_title;
+        this.books_author = books_author;
+        this.books_genre = books_genre;
+        this.books_avl = books_avl;
+        this.branch = branch;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Books{" +
+                "books_id='" + books_id + '\'' +
+                ", books_title='" + books_title + '\'' +
+                ", books_author='" + books_author + '\'' +
+                ", books_genre='" + books_genre + '\'' +
+                ", books_avl='" + books_avl + '\'' +
+                ", branch=" + branch +
+                '}';
+    }
 }

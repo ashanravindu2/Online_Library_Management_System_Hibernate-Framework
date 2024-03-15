@@ -1,30 +1,26 @@
 package org.example.dao.custom.impl;
 
 import javafx.scene.control.Alert;
-import org.example.dao.custom.BooksDAO;
-import org.example.dao.custom.BranchDAO;
-import org.example.dto.BooksDTO;
+import org.example.dao.custom.BookTransactionDAO;
+import org.example.entity.BookTransaction;
 import org.example.entity.Books;
-import org.example.entity.Branch;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import java.awt.print.Book;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-public class BooksDAOImpl implements BooksDAO {
-private Session session;
+public class BookTransactionDAOImpl implements BookTransactionDAO {
+    private Session session;
 
     @Override
-    public boolean save(Books books) {
+    public boolean save(BookTransaction bookTransaction) {
         try {
             Transaction transaction = session.beginTransaction();
-            Serializable save = session.save(books);
+            Serializable save = session.save(bookTransaction);
             transaction.commit();
             return save!=null;
         }catch (Exception e){
@@ -36,12 +32,12 @@ private Session session;
     }
 
     @Override
-    public Books find(String bookId) {
+    public BookTransaction find(String transacId) {
         try {
             Transaction transaction = session.beginTransaction();
-            Books books = session.get(Books.class, bookId);
+            BookTransaction bookTransaction = session.get(BookTransaction.class, transacId);
             transaction.commit();
-            return books;
+            return bookTransaction;
         }catch (Exception e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             return null;
@@ -51,10 +47,10 @@ private Session session;
     }
 
     @Override
-    public boolean update(Books books) {
+    public boolean update(BookTransaction bookTransaction) {
         try {
             Transaction transaction = session.beginTransaction();
-            session.update(books);
+            session.update(bookTransaction);
             transaction.commit();
             return true;
         }catch (Exception e){
@@ -67,15 +63,16 @@ private Session session;
 
     @Override
     public void setSession(Session session) {
-        this.session=session;
+        this.session = session;
+
     }
 
     @Override
-    public boolean delete(String bookId) {
+    public boolean delete(String trasacId) {
         try {
             Transaction transaction = session.beginTransaction();
-            Books books = session.get(Books.class, bookId);
-            session.delete(books);
+            BookTransaction bookTransaction = session.get(BookTransaction.class, trasacId);
+            session.delete(bookTransaction);
             transaction.commit();
             return true;
         }catch (Exception e){
@@ -87,12 +84,12 @@ private Session session;
     }
 
     @Override
-    public List<Books> getAll() {
+    public List<BookTransaction> getAll() {
         Transaction transaction = session.beginTransaction();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-        CriteriaQuery<Books> query = criteriaBuilder.createQuery(Books.class);
+        CriteriaQuery<BookTransaction> query = criteriaBuilder.createQuery(BookTransaction.class);
         query.from(Books.class);
-        List<Books> resultList = session.createQuery(query).getResultList();
+        List<BookTransaction> resultList = session.createQuery(query).getResultList();
         transaction.commit();
         session.close();
         return resultList;
@@ -100,46 +97,20 @@ private Session session;
 
     @Override
     public String getNextID() {
-        String newId = "K000";
+        String newId = "T000";
         Transaction transaction = session.beginTransaction();
-        String sql = "SELECT books_id FROM books ORDER BY books_id DESC LIMIT 1";
+        String sql = "SELECT transaction_id FROM book_transaction ORDER BY transaction_id DESC LIMIT 1";
         NativeQuery query = session.createSQLQuery(sql);
         List list = query.list();
 
-      if (list.isEmpty()) {
+        if (list.isEmpty()) {
             return newId;
         }else {
             newId= (String) list.get(0);
-         transaction.commit();
+            transaction.commit();
             session.close();
             return newId;
         }
-    }
-
-    @Override
-    public List<BooksDTO> isSearchTitle(String value) {
-        List<BooksDTO> booksDTOS = new ArrayList<>();
-        Transaction transaction = session.beginTransaction();
-        List<Object[]>list=null;
-        list = session.createNativeQuery("SELECT * FROM books WHERE books_avl = 'Yes' AND books_title='"+value+"'").list();
-        transaction.commit();
-        session.close();
-        if (list.isEmpty()){
-            System.out.println("empty");
-        }else {
-            for (Object[] objects : list){
-                booksDTOS.add(new BooksDTO(
-                        (String) objects[0],//id
-                        (String) objects[1],//title
-                        (String) objects[2],//author
-                        (String) objects[3],//genre
-                        (String) objects[4],//avl
-                        (String) objects[5]//branch
-
-                ));
-            }
-        }
-        return booksDTOS;
     }
 
 

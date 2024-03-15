@@ -1,9 +1,7 @@
 package org.example.bo;
 
-import org.example.bo.custom.impl.AdminBOImpl;
-import org.example.bo.custom.impl.BooksBOImpl;
-import org.example.bo.custom.impl.BranchBOImpl;
-import org.example.bo.custom.impl.UserBOImpl;
+import org.example.bo.custom.BookTransactionBO;
+import org.example.bo.custom.impl.*;
 import org.example.dao.custom.impl.UserDAOImpl;
 
 public class BOFactory {
@@ -13,7 +11,7 @@ public class BOFactory {
 
     }
     public enum BOTypes {
-        ADMIN, USER, BRANCH,BOOKS
+        ADMIN, USER, BRANCH,BOOKS,BOOKTRANSACTION
     }
 
     public static BOFactory getInstance() {
@@ -30,6 +28,8 @@ public class BOFactory {
                 return (T) new BranchBOImpl();
             case BOOKS:
                 return (T) new BooksBOImpl();
+            case BOOKTRANSACTION:
+                return (T) new BookTransactionBOImpl();
 
             default:
                 return null;

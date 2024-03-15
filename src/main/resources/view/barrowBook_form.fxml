@@ -15,23 +15,18 @@
 <AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BarrowBookController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="40.0" layoutX="213.0" layoutY="10.0" strokeType="INSIDE" style="-fx-arc-width: 11; -fx-arc-height: 11;" width="475.0" />
-      <Label fx:id="lblBookId" layoutX="187.0" layoutY="93.0" prefHeight="30.0" prefWidth="137.0" text="id">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtBookTitle" layoutX="381.0" layoutY="168.0" prefHeight="31.0" prefWidth="193.0" promptText="Title">
+      <TextField fx:id="txtBookTitle" layoutX="490.0" layoutY="168.0" onMouseClicked="#searchTxtClickSearchBtnDisablefalse" prefHeight="31.0" prefWidth="230.0" promptText="Title">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <TableView layoutX="36.0" layoutY="342.0" prefHeight="266.0" prefWidth="827.0">
+      <TableView fx:id="tblBook" layoutX="36.0" layoutY="342.0" prefHeight="266.0" prefWidth="827.0">
         <columns>
-          <TableColumn prefWidth="94.33333587646484" text="Book-Id" />
-          <TableColumn minWidth="0.0" prefWidth="130.66666412353516" text="Title" />
-            <TableColumn prefWidth="158.33331298828125" text="Genre" />
-            <TableColumn prefWidth="160.0" text="Author" />
-            <TableColumn prefWidth="144.0" text="Barrow_Date" />
-            <TableColumn prefWidth="138.66668701171875" text="Return_due_Date" />
+          <TableColumn fx:id="colBookId" prefWidth="92.66667175292969" text="Book-Id" />
+          <TableColumn fx:id="colTitle" minWidth="0.0" prefWidth="121.33332824707031" text="Title" />
+            <TableColumn fx:id="colGenre" prefWidth="172.3333282470703" text="Genre" />
+            <TableColumn fx:id="colBarrowDate" prefWidth="153.3333740234375" text="Barrow_Date" />
+            <TableColumn fx:id="colReturnDate" prefWidth="156.6666259765625" text="Return_due_Date" />
+            <TableColumn fx:id="colBranchId" prefWidth="129.3333740234375" text="Branch-Id" />
         </columns>
       </TableView>
       <Label layoutX="373.0" layoutY="15.0" text="BARROW BOOKS" textFill="#344e41">
@@ -42,17 +37,12 @@
             <Glow />
          </effect>
       </Label>
-      <Label layoutX="62.0" layoutY="98.0" text="Select Book_ID :">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="381.0" layoutY="138.0" text="Search Book">
+      <Label layoutX="490.0" layoutY="138.0" text="Search Book">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="62.0" layoutY="237.0" text="Author">
+      <Label layoutX="62.0" layoutY="259.0" text="Author">
          <font>
             <Font size="14.0" />
          </font>
@@ -62,30 +52,46 @@
             <Image url="@../assets/dashboardAssets/barrow.png" />
          </image>
       </ImageView>
-      <Label layoutX="684.0" layoutY="138.0" text="Genre">
+      <Label layoutX="512.0" layoutY="261.0" text="Genre">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbBranchId" layoutX="63.0" layoutY="167.0" prefHeight="30.0" prefWidth="171.0" promptText="Select Branch" />
-      <Label layoutX="382.0" layoutY="235.0" text="Availability">
+      <JFXComboBox fx:id="cmbBranchId" layoutX="269.0" layoutY="167.0" prefHeight="30.0" prefWidth="171.0" promptText="Select Branch" />
+      <Label layoutX="274.0" layoutY="259.0" text="Availability">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="382.0" layoutY="267.0" text="Availability">
+      <Label fx:id="lblBookAvl" layoutX="274.0" layoutY="291.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="684.0" layoutY="169.0" text="Genre">
+      <Label fx:id="lblGenre" layoutX="512.0" layoutY="292.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="63.0" layoutY="270.0" text="Author">
+      <Label fx:id="lblBookAuthor" layoutX="63.0" layoutY="292.0">
          <font>
             <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="btnsearch" fitHeight="35.0" fitWidth="120.0" layoutX="732.0" layoutY="167.0" onMouseClicked="#btnSearchAction" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/searchbook.png" />
+         </image>
+      </ImageView>
+      <JFXComboBox fx:id="cmbBookId" layoutX="63.0" layoutY="167.0" prefHeight="30.0" prefWidth="171.0" promptText="Select Branch" />
+      <Label layoutX="269.0" layoutY="137.0" text="Select Branch-ID">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="137.0" text="Select Book-ID">
+         <font>
+            <Font size="14.0" />
          </font>
       </Label>
    </children>
