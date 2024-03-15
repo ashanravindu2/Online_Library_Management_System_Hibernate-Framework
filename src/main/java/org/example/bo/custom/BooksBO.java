@@ -16,4 +16,6 @@ public interface BooksBO extends CrudBO<BooksDTO,String> {
     String IsavailableOrNotBook(String branchId, String bookTitle);
 
     boolean bookAvlUpdate(String bookId, String branchId);
+
+    boolean bookUpdateAvl(String text);
 }

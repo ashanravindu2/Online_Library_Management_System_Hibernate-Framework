@@ -23,7 +23,7 @@ public class UserBOImpl implements UserBO {
         Session session = Configure.getInstance().getSession();
         userDAO.setSession(session);
         return userDAO.save(new User(
-                userDTO.getName(),
+                userDTO.getGmail(),
                 userDTO.getName(),
                 userDTO.getPassword()
         ));

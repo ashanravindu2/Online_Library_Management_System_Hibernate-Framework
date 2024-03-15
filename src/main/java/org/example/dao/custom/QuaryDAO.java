@@ -15,4 +15,13 @@ public interface QuaryDAO extends SuperDAO {
     boolean bookAvlUpdate(String bookId, String branchId);
 
     List<BarrowBooksDTO> getAllBarrowBooks(String userName);
+
+
+    boolean bookUpdateAvl(String text);
+
+    boolean bookReturnStatusUpdate(String bookId, String userName);
+
+    List<BarrowBooksDTO> getAllReturnBeforeList(String userName);
+
+    List<BarrowBooksDTO> getAllTransactionIsUserList(String userName);
 }

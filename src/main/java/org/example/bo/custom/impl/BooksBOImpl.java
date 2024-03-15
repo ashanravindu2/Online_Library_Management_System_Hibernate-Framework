@@ -178,5 +178,18 @@ public class BooksBOImpl implements BooksBO {
         return quaryDAO.bookAvlUpdate(bookId,branchId);
     }
 
+    @Override
+    public boolean bookUpdateAvl(String bookId) {
+
+        try {
+            Session bookSession = Configure.getInstance().getSession();
+            quaryDAO.setSession(bookSession);
+            return quaryDAO.bookUpdateAvl(bookId);
+        }catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 }

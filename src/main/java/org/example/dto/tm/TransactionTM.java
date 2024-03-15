@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.awt.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -12,13 +13,12 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class BarrowBooksTM {
+public class TransactionTM {
     private String books_id;
     private String books_title;
-    private String books_genre;
     private Timestamp barrow_date;
     private Date return_date;
     private String branch_id;
-
+    private int return_status;
 
 }

@@ -13,4 +13,10 @@ public interface BookTransactionBO extends CrudBO<BookTransactionDTO,String> {
     String generateTransacId();
 
     List<BarrowBooksDTO> getAllBarroeBooks(String text);
+
+    boolean bookReturnStatusUpdate(String text, String userName);
+
+    List<BarrowBooksDTO> getAllReturnBeforeBarrowBooks(String userName);
+
+    List<BarrowBooksDTO> getAllTransactionIsUser(String userName);
 }

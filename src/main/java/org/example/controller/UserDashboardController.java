@@ -136,16 +136,26 @@ public class UserDashboardController {
     }
 
     public void btnReturnBookOnAction(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/returnBook_form.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/returnBook_form.fxml"));
+        Parent root = fxmlLoader.load();
+        ReturnBookController controller = fxmlLoader.getController();
+        controller.setUserName(lblUserName.getText());
         this.rootPane.getChildren().clear();
         this.rootPane.getChildren().add(root);
+
     }
 
     public void btnNotificationOnAction(MouseEvent mouseEvent) {
     }
 
     public void btnBookTransacOnAction(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/book_Transac_form.fxml"));
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/book_Transac_form.fxml"));
+        Parent root = fxmlLoader.load();
+        BookTransactionController controller = fxmlLoader.getController();
+        controller.setUserName(lblUserName.getText());
         this.rootPane.getChildren().clear();
         this.rootPane.getChildren().add(root);
     }

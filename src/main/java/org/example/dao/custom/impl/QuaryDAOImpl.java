@@ -78,4 +78,80 @@ public class QuaryDAOImpl implements QuaryDAO {
         return dtos;
     }
 
+    @Override
+    public boolean bookUpdateAvl(String text) {
+        Transaction transaction = session.beginTransaction();
+        String queryString = "UPDATE books SET books_avl = 'Yes' WHERE books_id = :bookId";
+        Query query = session.createNativeQuery(queryString);
+        query.setParameter("bookId", text);
+        int result = query.executeUpdate();
+        transaction.commit();
+        session.close();
+        return result > 0;
+
+    }
+
+    @Override
+    public boolean bookReturnStatusUpdate(String bookId, String userName) {
+        Transaction transaction = session.beginTransaction();
+        String queryString = "UPDATE book_transaction SET return_status='1' WHERE books_id = :bookId AND user_gmail = :userName";
+        Query query = session.createNativeQuery(queryString);
+        query.setParameter("bookId", bookId);
+        query.setParameter("userName", userName);
+        int result = query.executeUpdate();
+        transaction.commit();
+        session.close();
+        return result > 0;
+    }
+
+    @Override
+    public List<BarrowBooksDTO> getAllReturnBeforeList(String userName) {
+        List<BarrowBooksDTO> dtos = new ArrayList<>();
+        Transaction transaction = session.beginTransaction();
+        List<Object[]> list = session.createNativeQuery("SELECT b.books_id,b.books_title,b.books_genre,bb.barrow_date,bb.return_date,b.branch_id FROM books b INNER JOIN book_transaction bb ON b.books_id = bb.books_id WHERE bb.user_gmail = '"+userName+"' AND bb.return_status=0").list();
+        transaction.commit();
+        session.close();
+        if (list.isEmpty()){
+            System.out.println("empty");
+        }else {
+            for (Object[] objects : list){
+                dtos.add(new BarrowBooksDTO(
+                        (String) objects[0],
+                        (String) objects[1],
+                        (String) objects[2],
+                        (Timestamp) objects[3],
+                        (Date) objects[4],
+                        (String) objects[5]
+                ));
+            }
+        }
+        return dtos;
+    }
+
+    @Override
+    public List<BarrowBooksDTO> getAllTransactionIsUserList(String userName) {
+        List<BarrowBooksDTO> dtos = new ArrayList<>();
+        Transaction transaction = session.beginTransaction();
+        System.out.println("GET QUADAOIMPL");
+        List<Object[]> list = session.createNativeQuery("SELECT b.books_id,b.books_title,bb.barrow_date,bb.return_date,b.branch_id,bb.return_status FROM books b INNER JOIN book_transaction bb ON b.books_id = bb.books_id WHERE bb.user_gmail = '"+userName+"'").list();
+        transaction.commit();
+        session.close();
+        if (list.isEmpty()){
+            System.out.println("empty");
+        }else {
+            for (Object[] objects : list){
+                dtos.add(new BarrowBooksDTO(
+                        (String) objects[0],
+                        (String) objects[1],
+                        (Timestamp) objects[2],
+                        (Date) objects[3],
+                        (String) objects[4],
+                        (int) objects[5]
+                ));
+            }
+        }
+        return dtos;
+    }
+
+
 }

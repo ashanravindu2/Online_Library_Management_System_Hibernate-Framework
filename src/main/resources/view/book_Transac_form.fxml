@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BookTransactionController">
+<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BookTransactionController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="40.0" layoutX="213.0" layoutY="10.0" strokeType="INSIDE" style="-fx-arc-width: 11; -fx-arc-height: 11;" width="475.0" />
-      <TableView layoutX="64.0" layoutY="105.0" prefHeight="500.0" prefWidth="767.0">
+      <TableView fx:id="tblTransacHistory" layoutX="64.0" layoutY="105.0" prefHeight="500.0" prefWidth="767.0">
         <columns>
-          <TableColumn prefWidth="136.3333282470703" text="Book-Id" />
-          <TableColumn minWidth="0.0" prefWidth="141.6666717529297" text="Title" />
-            <TableColumn prefWidth="157.3333740234375" text="Genre" />
-            <TableColumn prefWidth="170.66668701171875" text="Barrow_Date" />
-            <TableColumn prefWidth="159.33331298828125" text="Return_Date" />
+          <TableColumn fx:id="colBranchId" prefWidth="111.0" text="Branch_Id" />
+          <TableColumn fx:id="colBookId" minWidth="0.0" prefWidth="118.0" text="Book-Id" />
+            <TableColumn fx:id="colBookTitle" prefWidth="161.0" text="Book_Title" />
+            <TableColumn fx:id="colBarrowDate" prefWidth="127.0" text="Barrow_Date" />
+            <TableColumn fx:id="colReturnDate" prefWidth="132.0" text="Return_Date" />
+            <TableColumn fx:id="colStatus" prefWidth="117.0" text="Status" />
         </columns>
       </TableView>
-      <Label layoutX="263.0" layoutY="15.0" text="TRANSACTION DETAILS (Returned Book)" textFill="#344e41">
+      <Label layoutX="340.0" layoutY="15.0" text="TRANSACTION DETAILS" textFill="#344e41">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -28,5 +27,6 @@
             <Glow />
          </effect>
       </Label>
+      <Button layoutX="64.0" layoutY="58.0" mnemonicParsing="false" onMouseEntered="#btnMoussHoverRefresh" text="Button" visible="false" />
    </children>
 </AnchorPane>

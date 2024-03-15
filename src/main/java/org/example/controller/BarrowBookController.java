@@ -85,15 +85,14 @@ public class BarrowBookController {
     public void initialize() {
         setDisableItemTrue();
         generateTransacId();
-   setCellValueFactory();
         setTable();
+        setCellValueFactory();
     }
 
     private void setTable() {
         ObservableList<BarrowBooksTM> resTMS = FXCollections.observableArrayList();
-        String sss = lblUserNameSet.getText();
-        System.out.println("User Name xxxx setTable:"+sss);
-        List<BarrowBooksDTO> barrowBooksDTOS = bookTransactionBO.getAllBarroeBooks(lblUserNameSet.getText());
+        String userName = lblUserNameSet.getText();
+        List<BarrowBooksDTO> barrowBooksDTOS = bookTransactionBO.getAllBarroeBooks(userName);
         for (BarrowBooksDTO barrowBooksDTO : barrowBooksDTOS) {
                     resTMS.add(new BarrowBooksTM(
                             barrowBooksDTO.getBooks_id(),
@@ -103,7 +102,10 @@ public class BarrowBookController {
                             barrowBooksDTO.getReturn_date(),
                             barrowBooksDTO.getBranch_id()
                     ));
+
         }
+
+
         tblBook.setItems(resTMS);
     }
 
@@ -137,9 +139,9 @@ public class BarrowBookController {
 
         boolean isUpdate = booksBO.bookAvlUpdate(bookId,branchId);
         if (isUpdate==true) {
-            boolean isBarrow = bookTransactionBO.save(new BookTransactionDTO(transacId,returnDate,bookId,username));
+            boolean isBarrow = bookTransactionBO.save(new BookTransactionDTO(transacId,returnDate,bookId,username,0));
+            initialize();
             if (isBarrow==true) {
-                System.out.println("suceefulecef");
             }
         }
 
@@ -169,6 +171,7 @@ public class BarrowBookController {
 
     @FXML
     void btnSearchAction(MouseEvent event) {
+        initialize();
         boolean isAvl = getAvilableBook();
         if (isAvl) {
             cmbBranchId.setDisable(false);

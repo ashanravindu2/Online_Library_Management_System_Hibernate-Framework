@@ -17,6 +17,7 @@ import org.example.bo.custom.BranchBO;
 import org.example.dto.BooksDTO;
 import org.example.dto.BranchDTO;
 import org.example.dto.tm.BooksTM;
+import org.example.dto.tm.BranchTM;
 
 public class BooksManageController {
     public Label lblBookId;
@@ -72,18 +73,21 @@ public class BooksManageController {
 
     private void tableRowSelectAction() {
         tblBooks.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            setDisableItemFalse();
-            BooksDTO selectedItem = (BooksDTO) tblBooks.getSelectionModel().getSelectedItem();
+            BooksTM selectedItem = (BooksTM) tblBooks.getSelectionModel().getSelectedItem();
             if (selectedItem == null) {
                 return;
             }
+               setDisableItemFalse();
             lblBookId.setText(selectedItem.getBooks_id());
             txtBookTitle.setText(selectedItem.getBooks_title());
             txtAuthor.setText(selectedItem.getBooks_author());
             txtGenre.setText(selectedItem.getBooks_genre());
             cmbBookAvl.setValue(selectedItem.getBooks_avl());
             cmbBranchId.setValue(selectedItem.getBranch_id());
+
+
         });
+
     }
 
     private void setTable() {
@@ -115,7 +119,7 @@ public class BooksManageController {
             idList.add(ids);
         }
         cmbBranchId.setItems(idList);
-        cmbBookAvl.getItems().add("Yes");
+        cmbBookAvl.setItems(FXCollections.observableArrayList("Yes","No"));
     }
 
     public void btnSaveBookAction(MouseEvent mouseEvent) {

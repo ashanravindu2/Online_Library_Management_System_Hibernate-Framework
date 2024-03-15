@@ -29,6 +29,9 @@ public class BookTransaction implements Serializable {
     @Column(name = "return_date")
     private Date return_date;
 
+    @Column(name = "return_status")
+    private int return_status;
+
     @ManyToOne
     @JoinColumn(name = "books_id")
     private Books books;

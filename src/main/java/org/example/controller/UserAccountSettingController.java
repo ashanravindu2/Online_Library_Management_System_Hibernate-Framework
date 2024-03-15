@@ -18,20 +18,37 @@ public class UserAccountSettingController {
     public void btnChangeOnAction(ActionEvent actionEvent) {
 
         UserDTO userDTO = userBO.findCredential(txtUserName.getText());
-
-        if (txtPassword.getText().equals(txtConfirmPassword.getText())) {
-            boolean update = userBO.update(new UserDTO(
-
-                    txtUserName.getText(),
-                    userDTO.getName(),
-                    txtConfirmPassword.getText()
-            ));
-            if (update){new Alert(Alert.AlertType.CONFIRMATION, "User Password Update successful !").show();}else {
-                new Alert(Alert.AlertType.ERROR, "User Password Update not successful !").show();
-            }
-
+        if (userDTO == null) {
+            new Alert(Alert.AlertType.ERROR, "User incorrect try again !").show();
+            clearOnAction();
+            return;
         } else {
-            new Alert(Alert.AlertType.ERROR, "User Password Not Same, Please Try Again !").show();
+
+            if (txtPassword.getText().equals(txtConfirmPassword.getText())) {
+                boolean update = userBO.update(new UserDTO(
+
+                        txtUserName.getText(),
+                        userDTO.getName(),
+                        txtConfirmPassword.getText()
+                ));
+                if (update) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "User Password Update successful !").show();
+                    clearOnAction();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "User Password Update not successful !").show();
+                    clearOnAction();
+                }
+
+            } else {
+                new Alert(Alert.AlertType.ERROR, "User Password Not Same, Please Try Again !").show();
+                clearOnAction();
+            }
         }
+    }
+
+    public void clearOnAction() {
+        txtUserName.clear();
+        txtPassword.clear();
+        txtConfirmPassword.clear();
     }
 }

@@ -114,5 +114,30 @@ public class BookTransactionBOImpl implements BookTransactionBO {
         return dtos;
     }
 
+    @Override
+    public boolean bookReturnStatusUpdate(String bookId, String userName) {
+        Session session = Configure.getInstance().getSession();
+        quaryDAO.setSession(session);
+        return quaryDAO.bookReturnStatusUpdate(bookId,userName);
+    }
+
+    @Override
+    public List<BarrowBooksDTO> getAllReturnBeforeBarrowBooks(String userName) {
+        Session session = Configure.getInstance().getSession();
+        quaryDAO.setSession(session);
+        List<BarrowBooksDTO> dtos = quaryDAO.getAllReturnBeforeList(userName);
+        return dtos;
+    }
+
+    @Override
+    public List<BarrowBooksDTO> getAllTransactionIsUser(String userName) {
+        Session session = Configure.getInstance().getSession();
+        quaryDAO.setSession(session);
+        System.out.println("GET BOIMPL");
+        List<BarrowBooksDTO> dtos = quaryDAO.getAllTransactionIsUserList(userName);
+        System.out.println("DONE BOIMPL");
+        return dtos;
+    }
+
 
 }

@@ -23,5 +23,6 @@ public class BookTransactionDTO {
     private Date return_date;
     private String books_id;
     private String user_gmail;
+    private int return_status;
 
 }
