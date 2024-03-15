@@ -30,4 +30,8 @@ public interface QuaryDAO extends SuperDAO {
     int getBookCount();
 
     int getUserCount();
+
+    int getOPenBranchCount();
+
+    int getBookBarrowCount(String count);
 }

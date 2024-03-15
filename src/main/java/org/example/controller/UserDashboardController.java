@@ -33,10 +33,17 @@ public class UserDashboardController {
 
 
 
-    public void initialize() {
+    public void initialize() throws IOException {
         lblDate.setText(new SimpleDateFormat("YYYY-MM-dd").format(new Date()));
         setCurrentTime();
         run = true;
+        setUi();
+    }
+
+    private void setUi() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/userHome_form.fxml"));
+        this.rootPane.getChildren().clear();
+        this.rootPane.getChildren().add(root);
     }
 
     public void mouseEnterButtonAction(MouseEvent mouseEvent) {
@@ -115,7 +122,15 @@ public class UserDashboardController {
         });
     }
 
-    public void btnDashboardOnAction(MouseEvent mouseEvent) {
+    public void btnDashboardOnAction(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/userHome_form.fxml"));
+        Parent root = fxmlLoader.load();
+        UserHomeController controller = fxmlLoader.getController();
+        controller.setUserName(lblUserName.getText());
+        this.rootPane.getChildren().clear();
+        this.rootPane.getChildren().add(root);
+
     }
 
     public void btnBarrowBookOnAction(MouseEvent mouseEvent) throws IOException {

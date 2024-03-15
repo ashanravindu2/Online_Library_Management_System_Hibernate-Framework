@@ -255,5 +255,49 @@ public class QuaryDAOImpl implements QuaryDAO {
         return count;
     }
 
+    @Override
+    public int getOPenBranchCount() {
+        Transaction transaction = null;
+        int count = 0;
+        try {
+            transaction = session.beginTransaction();
+            BigInteger result = (BigInteger) session.createNativeQuery("SELECT COUNT(branch_id) FROM branch WHERE branch_avl='open'").getSingleResult();
+            count = result.intValue();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(); // Handle exception properly in your application
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public int getBookBarrowCount(String user) {
+        Transaction transaction = null;
+        int count = 0;
+        try {
+            transaction = session.beginTransaction();
+            BigInteger result = (BigInteger) session.createNativeQuery("SELECT COUNT(transaction_id) FROM book_transaction WHERE user_gmail='"+user+"'").getSingleResult();
+            count = result.intValue();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(); // Handle exception properly in your application
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return count;
+    }
+
 
 }

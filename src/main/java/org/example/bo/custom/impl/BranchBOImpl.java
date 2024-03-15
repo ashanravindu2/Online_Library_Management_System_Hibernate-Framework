@@ -123,4 +123,11 @@ public class BranchBOImpl implements BranchBO {
         return quaryDAO.getBranchCount();
     }
 
+    @Override
+    public int getOpenBranchCount() {
+        Session session = Configure.getInstance().getSession();
+        quaryDAO.setSession(session);
+        return quaryDAO.getOPenBranchCount();
+    }
+
 }

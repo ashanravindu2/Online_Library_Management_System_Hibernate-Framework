@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-color: #dad7cd; -fx-background-radius: 11;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.UserHomeController">
+   <children>
+      <Label layoutX="313.0" layoutY="23.0" prefHeight="53.0" prefWidth="201.0" text="WELCOME ," textFill="#0f7c28" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="386.0">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="296.0" layoutY="81.0" text="SUBARANDU ONLINE LIBRARY" textFill="#056118">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="237.0" fitWidth="200.0" layoutX="361.0" layoutY="207.0" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/BookHomeImg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="237.0" fitWidth="200.0" layoutX="599.0" layoutY="207.0" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/userHome.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="237.0" fitWidth="200.0" layoutX="117.0" layoutY="207.0" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExitAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/branchHome.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblBranchCount" layoutX="206.0" layoutY="456.0">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblRegisterBookCount" layoutX="450.0" layoutY="456.0">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUserCount" layoutX="690.0" layoutY="456.0">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="username" layoutX="511.0" layoutY="38.0" textFill="#1c7930">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

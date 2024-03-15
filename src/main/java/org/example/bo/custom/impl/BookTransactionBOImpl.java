@@ -139,5 +139,12 @@ public class BookTransactionBOImpl implements BookTransactionBO {
         return dtos;
     }
 
+    @Override
+    public int getBookCountBarrow(String count) {
+        Session session = Configure.getInstance().getSession();
+        quaryDAO.setSession(session);
+        return quaryDAO.getBookBarrowCount(count);
+    }
+
 
 }
