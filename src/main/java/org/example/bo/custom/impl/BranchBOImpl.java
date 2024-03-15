@@ -6,6 +6,7 @@ import org.example.configuration.Configure;
 import org.example.dao.DAOFactory;
 import org.example.dao.custom.AdminDAO;
 import org.example.dao.custom.BranchDAO;
+import org.example.dao.custom.QuaryDAO;
 import org.example.dto.AdminDTO;
 import org.example.dto.BranchDTO;
 import org.example.entity.Admin;
@@ -19,6 +20,7 @@ import java.util.List;
 public class BranchBOImpl implements BranchBO {
 
     private final BranchDAO branchDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.BRANCHDAO);
+    private final QuaryDAO quaryDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.QUARYDAO);
 
     @Override
     public boolean save(BranchDTO branchDTO) {
@@ -112,6 +114,13 @@ public class BranchBOImpl implements BranchBO {
             nextBranchId = "B001";
         }
         return nextBranchId;
+    }
+
+    @Override
+    public int getBranchCount() {
+        Session session = Configure.getInstance().getSession();
+        quaryDAO.setSession(session);
+        return quaryDAO.getBranchCount();
     }
 
 }

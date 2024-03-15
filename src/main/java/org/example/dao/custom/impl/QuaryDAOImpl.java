@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -43,15 +44,27 @@ public class QuaryDAOImpl implements QuaryDAO {
 
     @Override
     public boolean bookAvlUpdate(String bookId, String branchId) {
-        Transaction transaction = session.beginTransaction();
-        String queryString = "UPDATE books SET books_avl = 'No' WHERE books_id = :bookId AND branch_id = :branchId";
-        Query query = session.createNativeQuery(queryString);
-        query.setParameter("bookId", bookId);
-        query.setParameter("branchId", branchId);
-        int result = query.executeUpdate();
-        transaction.commit();
-        session.close();
-        return result > 0;
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            String queryString = "UPDATE books SET books_avl = 'No' WHERE books_id = :bookId AND branch_id = :branchId";
+            Query query = session.createNativeQuery(queryString);
+            query.setParameter("bookId", bookId);
+            query.setParameter("branchId", branchId);
+            int result = query.executeUpdate();
+            transaction.commit();
+            return result > 0;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(); // Handle exception properly in your application
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return false;
     }
 
     @Override
@@ -80,28 +93,51 @@ public class QuaryDAOImpl implements QuaryDAO {
 
     @Override
     public boolean bookUpdateAvl(String text) {
-        Transaction transaction = session.beginTransaction();
-        String queryString = "UPDATE books SET books_avl = 'Yes' WHERE books_id = :bookId";
-        Query query = session.createNativeQuery(queryString);
-        query.setParameter("bookId", text);
-        int result = query.executeUpdate();
-        transaction.commit();
-        session.close();
-        return result > 0;
-
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            String queryString = "UPDATE books SET books_avl = 'Yes' WHERE books_id = :bookId";
+            Query query = session.createNativeQuery(queryString);
+            query.setParameter("bookId", text);
+            int result = query.executeUpdate();
+            transaction.commit();
+            return result > 0;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(); // Handle exception properly in your application
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return false;
     }
 
     @Override
     public boolean bookReturnStatusUpdate(String bookId, String userName) {
-        Transaction transaction = session.beginTransaction();
-        String queryString = "UPDATE book_transaction SET return_status='1' WHERE books_id = :bookId AND user_gmail = :userName";
-        Query query = session.createNativeQuery(queryString);
-        query.setParameter("bookId", bookId);
-        query.setParameter("userName", userName);
-        int result = query.executeUpdate();
-        transaction.commit();
-        session.close();
-        return result > 0;
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            String queryString = "UPDATE book_transaction SET return_status='1' WHERE books_id = :bookId AND user_gmail = :userName";
+            Query query = session.createNativeQuery(queryString);
+            query.setParameter("bookId", bookId);
+            query.setParameter("userName", userName);
+            int result = query.executeUpdate();
+            transaction.commit();
+            return result > 0;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(); // Handle exception properly in your application
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return false;
     }
 
     @Override
@@ -151,6 +187,72 @@ public class QuaryDAOImpl implements QuaryDAO {
             }
         }
         return dtos;
+    }
+
+    @Override
+    public int getBranchCount() {
+        Transaction transaction = null;
+        int count = 0;
+        try {
+            transaction = session.beginTransaction();
+            BigInteger result = (BigInteger) session.createNativeQuery("SELECT COUNT(branch_id) FROM branch").getSingleResult();
+            count = result.intValue();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(); // Handle exception properly in your application
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public int getBookCount() {
+        Transaction transaction = null;
+        int count = 0;
+        try {
+            transaction = session.beginTransaction();
+            BigInteger result = (BigInteger) session.createNativeQuery("SELECT COUNT(books_id) FROM books").getSingleResult();
+            count = result.intValue();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(); // Handle exception properly in your application
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public int getUserCount() {
+        Transaction transaction = null;
+        int count = 0;
+        try {
+            transaction = session.beginTransaction();
+            BigInteger result = (BigInteger) session.createNativeQuery("SELECT COUNT(user_gmail) FROM user").getSingleResult();
+            count = result.intValue();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(); // Handle exception properly in your application
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return count;
     }
 
 

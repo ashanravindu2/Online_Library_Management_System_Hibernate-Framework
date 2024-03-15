@@ -1,12 +1,17 @@
 package org.example.controller;
 
+import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import org.example.bo.BOFactory;
 import org.example.bo.custom.BookTransactionBO;
 import org.example.dto.BarrowBooksDTO;
@@ -29,14 +34,13 @@ public class BookTransactionController {
     private final BookTransactionBO bookTransactionBO = (BookTransactionBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.BOOKTRANSACTION);
     public void initialize() {
         setCellValueFactory();
-        setDataTable();
     }
 
     private void setDataTable() {
 
         ObservableList<TransactionTM> resTMS = FXCollections.observableArrayList();
         String userName = this.UserNameSet;
-        List<BarrowBooksDTO> barrowBooksDTOS = bookTransactionBO.getAllTransactionIsUser("Ashan");
+        List<BarrowBooksDTO> barrowBooksDTOS = bookTransactionBO.getAllTransactionIsUser(userName);
         System.out.println("GET");
         for (BarrowBooksDTO barrowBooksDTO : barrowBooksDTOS) {
             resTMS.add(new TransactionTM(
@@ -68,7 +72,34 @@ public class BookTransactionController {
         this.UserNameSet = text;
     }
 
-    public void btnMoussHoverRefresh(MouseEvent mouseEvent) {
+    public void mouseEnterAction(MouseEvent mouseEvent) {
         setDataTable();
+        setCellValueFactory();
+        if (mouseEvent.getSource() instanceof ImageView) {
+            ImageView icon = (ImageView) mouseEvent.getSource();
+
+            ScaleTransition scaleT = new ScaleTransition(Duration.millis(200), icon);
+            scaleT.setToX(1.1);
+            scaleT.setToY(1.1);
+            scaleT.play();
+
+            DropShadow glow = new DropShadow();
+            glow.setColor(Color.GREEN);
+            glow.setWidth(10);
+            glow.setHeight(10);
+            glow.setRadius(10);
+            icon.setEffect(glow);
+        }
+    }
+
+    public void mouseExistAction(MouseEvent mouseEvent) {
+        if (mouseEvent.getSource() instanceof ImageView) {
+            ImageView icon = (ImageView) mouseEvent.getSource();
+            ScaleTransition scaleT = new ScaleTransition(Duration.millis(200), icon);
+            scaleT.setToX(1);
+            scaleT.setToY(1);
+            scaleT.play();
+            icon.setEffect(null);
+        }
     }
 }

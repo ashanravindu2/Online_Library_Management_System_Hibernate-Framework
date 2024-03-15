@@ -58,6 +58,7 @@ public class ReturnBookController {
             ));
 
         }
+
         tblReturnTable.setItems(resTMS);
 
     }
@@ -147,5 +148,20 @@ public void setCellFactories(){
     }
     public void btnRefreshMouseEnterAction(MouseEvent mouseEvent) {
         setTable();
+        if (mouseEvent.getSource() instanceof ImageView) {
+            ImageView icon = (ImageView) mouseEvent.getSource();
+
+            ScaleTransition scaleT = new ScaleTransition(Duration.millis(200), icon);
+            scaleT.setToX(1.1);
+            scaleT.setToY(1.1);
+            scaleT.play();
+
+            DropShadow glow = new DropShadow();
+            glow.setColor(Color.GREEN);
+            glow.setWidth(10);
+            glow.setHeight(10);
+            glow.setRadius(10);
+            icon.setEffect(glow);
+        }
     }
 }

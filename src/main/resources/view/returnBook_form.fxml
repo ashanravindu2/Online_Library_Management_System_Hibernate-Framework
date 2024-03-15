@@ -7,10 +7,10 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ReturnBookController">
+<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11; -fx-background-color: #dad7cd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ReturnBookController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="40.0" layoutX="213.0" layoutY="10.0" strokeType="INSIDE" style="-fx-arc-width: 11; -fx-arc-height: 11;" width="475.0" />
-      <Label fx:id="lblBookId" layoutX="262.0" layoutY="93.0" prefHeight="30.0" prefWidth="137.0" text="id">
+      <Label fx:id="lblBookId" layoutX="262.0" layoutY="93.0" prefHeight="30.0" prefWidth="137.0" text="not found !">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -42,7 +42,7 @@
             <Image url="@../assets/dashboardAssets/returnBook%20(1).png" />
          </image>
       </ImageView>
-      <Label fx:id="lblBookTitle" layoutX="262.0" layoutY="149.0" prefHeight="30.0" prefWidth="137.0" text="id">
+      <Label fx:id="lblBookTitle" layoutX="262.0" layoutY="149.0" prefHeight="30.0" prefWidth="137.0" text="not found !">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -52,7 +52,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblRetuenDate" layoutX="262.0" layoutY="207.0" prefHeight="30.0" prefWidth="137.0" text="id">
+      <Label fx:id="lblRetuenDate" layoutX="262.0" layoutY="207.0" prefHeight="30.0" prefWidth="137.0" text="not found !">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

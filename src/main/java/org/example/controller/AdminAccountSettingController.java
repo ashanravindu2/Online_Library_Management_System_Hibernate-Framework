@@ -16,20 +16,37 @@ public class AdminAccountSettingController {
     public void btnChangeOnAction(ActionEvent actionEvent) {
 
         AdminDTO adminDTO = adminBO.findCredential(txtUserName.getText());
-
-        if (txtPassword.getText().equals(txtConfirmPassword.getText())) {
-            boolean update = adminBO.update(new AdminDTO(
-
-                    txtUserName.getText(),
-                    adminDTO.getName(),
-                    txtConfirmPassword.getText()
-            ));
-            if (update){new Alert(Alert.AlertType.CONFIRMATION, "Admin Password Update successful !").show();}else {
-                new Alert(Alert.AlertType.ERROR, "Admin Password Update not successful !").show();
-            }
-
+        if (adminDTO == null) {
+            new Alert(Alert.AlertType.ERROR, "Admin incorrect try again !").show();
+            clearOnAction();
+            return;
         } else {
-            new Alert(Alert.AlertType.ERROR, "Admin Password Not Same, Please Try Again !").show();
+
+            if (txtPassword.getText().equals(txtConfirmPassword.getText())) {
+                boolean update = adminBO.update(new AdminDTO(
+
+                        txtUserName.getText(),
+                        adminDTO.getName(),
+                        txtConfirmPassword.getText()
+                ));
+                if (update) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Admin Password Update successful !").show();
+                    clearOnAction();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Admin Password Update not successful !").show();
+                    clearOnAction();
+                }
+
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Admin Password Not Same, Please Try Again !").show();
+                clearOnAction();
+            }
         }
+    }
+
+    private void clearOnAction() {
+        txtUserName.clear();
+        txtPassword.clear();
+        txtConfirmPassword.clear();
     }
 }

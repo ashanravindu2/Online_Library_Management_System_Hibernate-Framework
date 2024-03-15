@@ -5,6 +5,7 @@ import org.example.bo.custom.UserBO;
 import org.example.configuration.Configure;
 import org.example.dao.DAOFactory;
 import org.example.dao.custom.AdminDAO;
+import org.example.dao.custom.QuaryDAO;
 import org.example.dao.custom.UserDAO;
 import org.example.dto.AdminDTO;
 import org.example.dto.UserDTO;
@@ -17,6 +18,7 @@ import java.util.List;
 public class UserBOImpl implements UserBO {
 
     private final UserDAO userDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.USERDAO);
+    QuaryDAO quaryDAO = DAOFactory.getInstance().getDAO(DAOFactory.DAOType.QUARYDAO);
 
     @Override
     public boolean save(UserDTO userDTO) {
@@ -70,5 +72,12 @@ public class UserBOImpl implements UserBO {
         }else {
             return null;
         }
+    }
+
+    @Override
+    public int getUserCount() {
+        Session session = Configure.getInstance().getSession();
+        quaryDAO.setSession(session);
+        return quaryDAO.getUserCount();
     }
 }

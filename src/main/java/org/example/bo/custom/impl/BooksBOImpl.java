@@ -191,5 +191,12 @@ public class BooksBOImpl implements BooksBO {
         }
     }
 
+    @Override
+    public int getBookCount() {
+        Session session = Configure.getInstance().getSession();
+        quaryDAO.setSession(session);
+        return quaryDAO.getBookCount();
+    }
+
 
 }

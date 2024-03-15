@@ -65,5 +65,10 @@
             <Font size="15.0" />
          </font>
       </JFXButton>
+      <Label layoutX="405.0" layoutY="16.0" text="User" textFill="#344e41">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

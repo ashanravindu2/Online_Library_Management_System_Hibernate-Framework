@@ -18,4 +18,6 @@ public interface BooksBO extends CrudBO<BooksDTO,String> {
     boolean bookAvlUpdate(String bookId, String branchId);
 
     boolean bookUpdateAvl(String text);
+
+    int getBookCount();
 }

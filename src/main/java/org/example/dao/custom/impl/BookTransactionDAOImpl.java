@@ -18,17 +18,22 @@ public class BookTransactionDAOImpl implements BookTransactionDAO {
 
     @Override
     public boolean save(BookTransaction bookTransaction) {
-        try {
-            Transaction transaction = session.beginTransaction();
+        Transaction transaction = null;
+        try{
+            transaction = session.beginTransaction();
             Serializable save = session.save(bookTransaction);
             transaction.commit();
             return save!=null;
         }catch (Exception e){
+            if (transaction != null) {
+                transaction.rollback();
+            }
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             return false;
         }finally {
             session.close();
         }
+
     }
 
     @Override

@@ -35,10 +35,17 @@ public class AdminDashboardController {
     boolean run = true;
 
 
-    public void initialize() {
+    public void initialize() throws IOException {
         lblDate.setText(new SimpleDateFormat("YYYY-MM-dd").format(new Date()));
         setCurrentTime();
         run = true;
+        setUi();
+    }
+
+    private void setUi() throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/adminHome_form.fxml"));
+        this.rootPane.getChildren().clear();
+        this.rootPane.getChildren().add(root);
     }
 
     public void mouseEnterButtonAction(MouseEvent mouseEvent) {
@@ -116,7 +123,10 @@ public class AdminDashboardController {
         });
     }
 
-    public void btnDashBoardAction(MouseEvent mouseEvent) {
+    public void btnDashBoardAction(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/adminHome_form.fxml"));
+        this.rootPane.getChildren().clear();
+        this.rootPane.getChildren().add(root);
     }
 
     public void btnBranchOnAction(MouseEvent mouseEvent) throws IOException {
@@ -132,7 +142,15 @@ public class AdminDashboardController {
 
     }
 
-    public void btnUserManageOnAction(MouseEvent mouseEvent) {
+    public void btnUserManageOnAction(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/userAccountSetting_form.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        stage.setTitle("User Account Setting");
+        stage.show();
 
     }
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BooksManageController">
+<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11; -fx-background-color: #dad7cd;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BooksManageController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="40.0" layoutX="213.0" layoutY="10.0" strokeType="INSIDE" style="-fx-arc-width: 11; -fx-arc-height: 11;" width="475.0" />
       <Label fx:id="lblBookId" layoutX="246.0" layoutY="93.0" prefHeight="30.0" prefWidth="137.0" text="id">

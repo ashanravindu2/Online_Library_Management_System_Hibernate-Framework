@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BookTransactionController">
+<AnchorPane prefHeight="632.0" prefWidth="900.0" style="-fx-background-radius: 11; -fx-background-color: #dad7cd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BookTransactionController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a3b18a" height="40.0" layoutX="213.0" layoutY="10.0" strokeType="INSIDE" style="-fx-arc-width: 11; -fx-arc-height: 11;" width="475.0" />
-      <TableView fx:id="tblTransacHistory" layoutX="64.0" layoutY="105.0" prefHeight="500.0" prefWidth="767.0">
+      <TableView fx:id="tblTransacHistory" layoutX="64.0" layoutY="129.0" prefHeight="476.0" prefWidth="767.0">
         <columns>
           <TableColumn fx:id="colBranchId" prefWidth="111.0" text="Branch_Id" />
           <TableColumn fx:id="colBookId" minWidth="0.0" prefWidth="118.0" text="Book-Id" />
@@ -27,6 +31,10 @@
             <Glow />
          </effect>
       </Label>
-      <Button layoutX="64.0" layoutY="58.0" mnemonicParsing="false" onMouseEntered="#btnMoussHoverRefresh" text="Button" visible="false" />
+      <ImageView fitHeight="40.0" fitWidth="104.0" layoutX="748.0" layoutY="83.0" onMouseEntered="#mouseEnterAction" onMouseExited="#mouseExistAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dashboardAssets/refresh.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

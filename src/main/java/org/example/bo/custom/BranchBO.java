@@ -10,4 +10,6 @@ public interface BranchBO extends CrudBO<BranchDTO,String> {
 
 
     String getNewBranchId();
+
+    int getBranchCount();
 }

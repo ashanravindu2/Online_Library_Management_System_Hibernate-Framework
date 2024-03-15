@@ -6,4 +6,6 @@ import org.example.dto.UserDTO;
 
 public interface UserBO extends CrudBO<UserDTO,String> {
     UserDTO findCredential(String text);
+
+    int getUserCount();
 }

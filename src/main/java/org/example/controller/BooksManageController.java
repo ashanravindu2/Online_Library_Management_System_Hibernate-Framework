@@ -78,6 +78,9 @@ public class BooksManageController {
                 return;
             }
                setDisableItemFalse();
+            btnBookSave.setDisable(true);
+            btnBookSave.setOpacity(0.5);
+
             lblBookId.setText(selectedItem.getBooks_id());
             txtBookTitle.setText(selectedItem.getBooks_title());
             txtAuthor.setText(selectedItem.getBooks_author());
@@ -134,12 +137,25 @@ public class BooksManageController {
         System.out.println( cmbBranchId.getValue().toString());
         if (save){
             new Alert(Alert.AlertType.CONFIRMATION,"Book Saved Successful !").show();
+            setBookId();
+            setTable();
+            setDisableItemTrue();
+            clearValue();
         }else {
             new Alert(Alert.AlertType.ERROR, "Exist Book try Again !").show();
         }
         setDisableItemTrue();
 
     }
+
+    private void clearValue() {
+        txtBookTitle.setText("");
+        txtAuthor.setText("");
+        txtGenre.setText("");
+        cmbBookAvl.setValue(null);
+        cmbBranchId.setValue(null);
+    }
+
     public void btnUpdateBookAction(MouseEvent mouseEvent) {
         boolean update = booksBO.update(new BooksDTO(
                 lblBookId.getText(),
@@ -152,8 +168,12 @@ public class BooksManageController {
 
         if (update){
             new Alert(Alert.AlertType.CONFIRMATION,"Book Details Update Successful !").show();
+            setBookId();
+            setTable();
+            clearValue();
         }else {
             new Alert(Alert.AlertType.ERROR, "Book Details Update not Successful !").show();
+            clearValue();
         }
         setDisableItemTrue();
     }
@@ -162,15 +182,18 @@ public class BooksManageController {
         boolean delete = booksBO.delete(lblBookId.getText());
         if (delete){
             new Alert(Alert.AlertType.CONFIRMATION,"Book Remove Successful !").show();
+            setTable();
+            clearValue();
         }else {
             new Alert(Alert.AlertType.ERROR, "Book Remove not Successful !").show();
+            clearValue();
+            setBookId();
         }
         setDisableItemTrue();
     }
 
     public void btnAddNewBookAction(MouseEvent mouseEvent) {
         setDisableItemFalse();
-
     }
 
     public void mouseEnterAction(MouseEvent mouseEvent) {

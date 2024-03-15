@@ -24,4 +24,10 @@ public interface QuaryDAO extends SuperDAO {
     List<BarrowBooksDTO> getAllReturnBeforeList(String userName);
 
     List<BarrowBooksDTO> getAllTransactionIsUserList(String userName);
+
+    int getBranchCount();
+
+    int getBookCount();
+
+    int getUserCount();
 }

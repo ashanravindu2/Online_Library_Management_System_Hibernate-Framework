@@ -68,6 +68,8 @@ public class BranchController {
             if (selectedItem == null) {
                 return;
             }
+            btnSave.setDisable(true);
+            btnSave.setOpacity(0.5);
             lblBranchId.setText(selectedItem.getBranch_id());
             txtBranchLoacation.setText(selectedItem.getBranch_location());
             txtBranchContact.setText(selectedItem.getBranch_contact());
@@ -147,8 +149,11 @@ public class BranchController {
 
         if (save){
             new Alert(Alert.AlertType.CONFIRMATION,"Branch Saved Successful !").show();
+            setTable();
+            clearAll();
         }else {
             new Alert(Alert.AlertType.ERROR, "Exist Branch try Again !").show();
+            clearAll();
         }
         setDisableItemTrue();
     }
@@ -165,9 +170,12 @@ public class BranchController {
                     cmbBranchAvl.getValue().toString()
             ));
             if (update){
+                clearAll();
+                setTable();
                 new Alert(Alert.AlertType.CONFIRMATION,"Branch Update Successful !").show();
             }else {
                 new Alert(Alert.AlertType.ERROR, "Branch Update not Successful !").show();
+                clearAll();
             }
             setDisableItemTrue();
     }
@@ -176,9 +184,18 @@ public class BranchController {
         boolean delete = branchBO.delete(lblBranchId.getText());
         if (delete){
             new Alert(Alert.AlertType.CONFIRMATION,"Branch Delete Successful !").show();
+            clearAll();
+            setTable();
         }else {
             new Alert(Alert.AlertType.ERROR, "Branch Delete not Successful !").show();
+            clearAll();
         }
         setDisableItemTrue();
+    }
+    public void clearAll() {
+        lblBranchId.setText("");
+        txtBranchLoacation.setText("");
+        txtBranchContact.setText("");
+        cmbBranchAvl.setValue("");
     }
 }
