@@ -110,18 +110,8 @@ public class BookTransactionBOImpl implements BookTransactionBO {
     public List<BarrowBooksDTO> getAllBarroeBooks(String userName) {
         Session session = Configure.getInstance().getSession();
         quaryDAO.setSession(session);
-        List<BarrowBooksDTO>branchDTOS  = new ArrayList<>();
-        for (Object[] objects : quaryDAO.getAllBarrowBooks(userName)){
-            branchDTOS.add(new BarrowBooksDTO(
-                    (String) objects[0],//books_id
-                    (String) objects[1],//books_title
-                    (String) objects[2],//books_genre
-                    (String) objects[3],//branch_id
-                    (String) objects[4],//barrow_date
-                    (String) objects[5]//return_date
-                ));
-        }
-        return branchDTOS;
+        List<BarrowBooksDTO> dtos = quaryDAO.getAllBarrowBooks(userName);
+        return dtos;
     }
 
 

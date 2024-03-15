@@ -1,10 +1,14 @@
 package org.example.dao.custom.impl;
 
 import org.example.dao.custom.QuaryDAO;
+import org.example.dto.BarrowBooksDTO;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuaryDAOImpl implements QuaryDAO {
@@ -51,69 +55,27 @@ public class QuaryDAOImpl implements QuaryDAO {
     }
 
     @Override
-    public List<Object[]> getAllBarrowBooks(String userName) {
-/*        List<BarrowBooksDTO> dtos = new ArrayList<>();
+    public List<BarrowBooksDTO> getAllBarrowBooks(String userGmail) {
+      List<BarrowBooksDTO> dtos = new ArrayList<>();
         Transaction transaction = session.beginTransaction();
-
-        String queryString = "SELECT b.books_id, b.books_title, b.books_genre, b.branch_id, bt.barrow_date, bt.return_date FROM books b JOIN book_transaction bt ON b.books_id = bt.books_id WHERE bt.user_gmail = :userName";
-        Query query = session.createNativeQuery(queryString);
-        query.setParameter("userName", userName);
-
-        List<Object[]> list = query.list();
-
+        List<Object[]> list = session.createNativeQuery("SELECT b.books_id,b.books_title,b.books_genre,bb.barrow_date,bb.return_date,b.branch_id FROM books b INNER JOIN book_transaction bb ON b.books_id = bb.books_id WHERE bb.user_gmail = '"+userGmail+"'").list();
         transaction.commit();
         session.close();
-
-if (list.isEmpty()) {
-            return null;
-        } else {
-            for (Object[] objects : list) {
+        if (list.isEmpty()){
+            System.out.println("empty");
+        }else {
+            for (Object[] objects : list){
                 dtos.add(new BarrowBooksDTO(
-                        (String) objects[0],//books_id
-                        (String) objects[1],//books_title
-                        (String) objects[2],//books_genre
-                        (Date) objects[3],//barrow_date
-                        (Date) objects[4],//return_date
-                        (String) objects[5]//branch_id
+                        (String) objects[0],
+                        (String) objects[1],
+                        (String) objects[2],
+                        (Timestamp) objects[3],
+                        (Date) objects[4],
+                        (String) objects[5]
                 ));
             }
         }
-        return dtos;*/
-        Transaction transaction = session.beginTransaction();
-        String queryString = "SELECT b.books_id, b.books_title, b.books_genre, b.branch_id, bt.barrow_date, bt.return_date FROM books b JOIN book_transaction bt ON b.books_id = bt.books_id WHERE bt.user_gmail = :userName";
-        Query query = session.createNativeQuery(queryString);
-        query.setParameter("userName", userName);
-        List<Object[]> list = query.list();
-        transaction.commit();
-        session.close();
-        return list;
+        return dtos;
     }
 
-/*    @Override
-    public List<BarrowBooksDTO> getAllBarrowBooks(String userName) {
-
-        List<BarrowBooksDTO> dtos = new ArrayList<>();
-        Transaction transaction = session.beginTransaction();
-        String queryString = "SELECT b.books_id, b.books_title, b.books_genre, b.branch_id, bt.barrow_date, bt.return_date FROM books b JOIN book_transaction bt ON b.books_id = bt.books_id WHERE bt.user_gmail = :userName";
-        Query query = session.createNativeQuery(queryString);
-        query.setParameter("userName", userName);
-        List<Object[]> list = query.list();
-        transaction.commit();
-        session.close();
-        if (list.isEmpty()) {
-            return null;
-        } else {
-          for (Object[] objects : list) {
-              dtos.add(new BarrowBooksDTO(
-                      (String) objects[0],//books_id
-                      (String) objects[1],//books_title
-                      (String) objects[2],//books_genre
-                      (Date) objects[3],//barrow_date
-                      (Date) objects[4],//return_date
-                      (String) objects[5]//branch_id
-              ));
-            }
-        }
-        return dtos;
-    }*/
 }

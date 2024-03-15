@@ -110,9 +110,9 @@ public class UserLoginController {
         System.out.println(txtUserName.getText());
         System.out.println(textPassword.getText());
 
- /*       if (userDTO!=null){
+        if (userDTO!=null){
             if (userDTO.getPassword().equals(textPassword.getText())) {
-                if (userDTO.getGmail() != null && textPassword.getText().equals(userDTO.getPassword())) {*/
+                if (userDTO.getGmail() != null && textPassword.getText().equals(userDTO.getPassword())) {
 
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("/view/User_Dashboard_form.fxml"));
@@ -131,12 +131,12 @@ public class UserLoginController {
                     tt.setToY(0);
                     tt.play();
 
-   /*            }
+               }
             }else {
                 new Alert(Alert.AlertType.WARNING,"Invalid Password !").show();
             }
         } else {
             new Alert(Alert.AlertType.WARNING,"Empty value or Invalid UserName or Password !").show();
-        }*/
+        }
     }
 }

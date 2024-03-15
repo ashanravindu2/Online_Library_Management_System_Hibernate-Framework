@@ -1,6 +1,7 @@
 package org.example.dao.custom;
 
 import org.example.dao.SuperDAO;
+import org.example.dto.BarrowBooksDTO;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface QuaryDAO extends SuperDAO {
 
     boolean bookAvlUpdate(String bookId, String branchId);
 
-    List<Object[]> getAllBarrowBooks(String userName);
+    List<BarrowBooksDTO> getAllBarrowBooks(String userName);
 }

@@ -72,12 +72,14 @@ public class BarrowBookController {
     @FXML
     private TextField txtBookTitle;
 
+    @FXML
+    private Label lblUserNameSet;
+
     private final BookTransactionBO bookTransactionBO = (BookTransactionBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.BOOKTRANSACTION);
     private final BooksBO booksBO = (BooksBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.BOOKS);
     private ObservableList<String> branchesAvl = FXCollections.observableArrayList();
     private ObservableList<String> bookIdAvl = FXCollections.observableArrayList();
     private String transacId;
-    private String userName;
 
 
     public void initialize() {
@@ -88,18 +90,21 @@ public class BarrowBookController {
     }
 
     private void setTable() {
-        ObservableList<BarrowBooksDTO> booksTMS = FXCollections.observableArrayList();
-        for (BarrowBooksDTO booksDTO : bookTransactionBO.getAllBarroeBooks("ashan")) {
-            booksTMS.add(new BarrowBooksDTO(
-                    booksDTO.getBooks_id(),
-                    booksDTO.getBooks_title(),
-                    booksDTO.getBooks_genre(),
-                    booksDTO.getBarrow_date(),
-                    booksDTO.getReturn_date(),
-                    booksDTO.getBranch_id()
-            ));
+        ObservableList<BarrowBooksTM> resTMS = FXCollections.observableArrayList();
+        String sss = lblUserNameSet.getText();
+        System.out.println("User Name xxxx setTable:"+sss);
+        List<BarrowBooksDTO> barrowBooksDTOS = bookTransactionBO.getAllBarroeBooks(lblUserNameSet.getText());
+        for (BarrowBooksDTO barrowBooksDTO : barrowBooksDTOS) {
+                    resTMS.add(new BarrowBooksTM(
+                            barrowBooksDTO.getBooks_id(),
+                            barrowBooksDTO.getBooks_title(),
+                            barrowBooksDTO.getBooks_genre(),
+                            barrowBooksDTO.getBarrow_date(),
+                            barrowBooksDTO.getReturn_date(),
+                            barrowBooksDTO.getBranch_id()
+                    ));
         }
-        tblBook.setItems(booksTMS);
+        tblBook.setItems(resTMS);
     }
 
     private void setCellValueFactory() {
@@ -128,11 +133,11 @@ public class BarrowBookController {
         String bookId = cmbBookId.getValue();
         String transacId = this.transacId;
         Date returnDate = Date.valueOf(LocalDate.now().plusDays(30).toString());
-        String userName = this.userName;
+        String username = lblUserNameSet.getText();
 
         boolean isUpdate = booksBO.bookAvlUpdate(bookId,branchId);
         if (isUpdate==true) {
-            boolean isBarrow = bookTransactionBO.save(new BookTransactionDTO(transacId,returnDate,bookId,userName));
+            boolean isBarrow = bookTransactionBO.save(new BookTransactionDTO(transacId,returnDate,bookId,username));
             if (isBarrow==true) {
                 System.out.println("suceefulecef");
             }
@@ -233,6 +238,7 @@ public class BarrowBookController {
 
 
     public void setUserName(String userName) {
-       this.userName = userName;
+        System.out.println("User Name setUserStartup: "+userName);
+        lblUserNameSet.setText(userName);
     }
 }

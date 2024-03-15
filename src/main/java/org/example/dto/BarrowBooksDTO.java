@@ -14,8 +14,8 @@ public class BarrowBooksDTO {
     private String books_id;
     private String books_title;
     private String books_genre;
-    private String barrow_date;
-    private String return_date;
+    private Timestamp barrow_date;
+    private Date return_date;
     private String branch_id;
 
 }
